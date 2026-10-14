@@ -1,5 +1,5 @@
 /* Service Worker – Nathalie Barth · Mutige Kinderherzen (Webseite). Die App unter was-mache-ich-wenn-app/ hat einen eigenen Worker. */
-const VERSION = "1.0.12";
+const VERSION = "1.0.20";
 const CACHE = "natbarth-site-" + VERSION;
 const CORE = ["./", "index.html", "impressum.html", "datenschutz.html", "stil.css", "seite.js", "manifest.webmanifest"];
 const OPTIONAL = ["favicon.png", "icon-192.png", "icon-512.png", "icon-maskable-512.png", "apple-touch-icon.png", "vorschau_natbarth.jpg",

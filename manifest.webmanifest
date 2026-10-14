@@ -1,0 +1,21 @@
+{
+  "name": "Nathalie Barth – Mutige Kinderherzen",
+  "short_name": "Mutige Kinderherzen",
+  "description": "Selbstbehauptungs- und Resilienztraining für Kinder, Ratgeber „Was mache ich, wenn…?“ und Lern-App.",
+  "lang": "de",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#edefeb",
+  "theme_color": "#393193",
+  "categories": ["education", "lifestyle"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "WAS MACHE ICH WENN APP", "url": "was-mache-ich-wenn-app/app.html" }
+  ]
+}

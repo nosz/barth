@@ -158,8 +158,33 @@ main{padding:22px 18px 40px;outline:0}
 .backbtn svg{width:20px;height:20px;flex:none}
 .backbtn:hover{background:var(--indigo);border-color:var(--indigo);color:#fff}
 .backbtn:focus-visible,.cbtn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+html{scroll-padding-top:calc(var(--hh,62px) + var(--nh,0px) + 10px)}
+.stickynav{position:sticky;top:var(--hh,62px);z-index:30;background:var(--bg);margin:0 -18px 14px;padding:10px 18px 2px;border-bottom:1px solid transparent;transition:box-shadow .2s,border-color .2s}
+.stickynav.stuck{border-bottom-color:var(--line);box-shadow:0 10px 16px -12px rgba(39,34,106,.35)}
+@media print{.stickynav{position:static;box-shadow:none}}
+.stickynav .crumbbar{margin:0 0 8px}.stickynav .steps{margin:0 0 8px}
+.stickynav .qp{margin:0;line-height:1.3;overflow-wrap:anywhere}
+.stickynav .bar{height:8px;margin:6px 0 10px}
+.mobonly{display:none}
+@media (max-width:560px){
+  .mobonly{display:inline}
+  .stickynav:has(.steps){display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 8px;padding:6px 18px;margin-bottom:12px}
+  .stickynav .qp,.stickynav .bar{flex:1 1 100%}
+  .stickynav .qp{font-size:.86rem}
+  .stickynav .bar{margin:0 0 4px;height:6px}
+  .stickynav:has(.steps) .crumbbar{margin:0;flex:0 1 auto;min-width:0}
+  .stickynav:has(.steps) .crumbbar .wl,.stickynav .steps li:not(.cur) .sl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .stickynav:has(.steps) .crumbbar{gap:8px}
+  .stickynav:has(.steps) .crumbbar .ws{display:inline;font-weight:700;font-size:.86rem;color:var(--mute)}
+  .stickynav .steps{margin:0;gap:6px;flex-wrap:nowrap;flex:0 0 auto}
+  .stickynav .steps li{font-size:.84rem}
+  .stickynav .steps .si{padding:3px 10px 3px 4px}
+  .stickynav .steps li:not(.cur) .si{padding:3px 8px 3px 6px;width:auto;min-width:40px;justify-content:center}
+  .stickynav .steps li:not(.cur){min-width:44px;justify-content:center}
+}
 .crumbbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;margin:2px 0 14px}
 .crumbbar .where{font-size:.9rem;color:var(--mute);font-weight:600}
+.crumbbar .ws{display:none}
 .modnav{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:26px;padding-top:18px;border-top:1px solid var(--line)}
 .csum{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:14px 18px;margin:14px 0 16px}
 .csum>div{flex:1 1 220px;min-width:0}.csum b{display:block;margin-bottom:6px}.csum .bar{margin:0}
@@ -193,7 +218,12 @@ main{padding:22px 18px 40px;outline:0}
 .nextcard p{margin:0 0 12px;color:var(--mute)}
 .nextcard .row{display:flex;flex-wrap:wrap;gap:10px}
 .steps{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 16px}
-.steps li{display:flex;align-items:center;gap:8px;padding:5px 14px 5px 6px;border-radius:999px;background:var(--card);border:2px solid var(--line);font-weight:700;font-size:.9rem;color:var(--mute)}
+.steps li{display:flex;border-radius:999px;background:var(--card);border:2px solid var(--line);font-weight:700;font-size:.9rem;color:var(--mute);overflow:hidden}
+.steps .si{display:flex;align-items:center;gap:8px;padding:5px 14px 5px 6px;min-height:40px;width:100%;background:none;border:0;font:inherit;color:inherit;text-align:left}
+.steps button.si{cursor:pointer;transition:background .15s}.steps button.si:hover:not(:disabled){background:var(--soft)}
+.steps button.si:focus-visible{outline-offset:-4px;border-radius:999px}
+.steps .sn{display:grid;place-items:center;width:28px;height:28px}.steps .sn svg{width:16px;height:16px;display:block}
+.steps li.lock{border-style:dashed}.steps li.lock button.si{cursor:not-allowed}
 .steps .sn{width:24px;height:24px;border-radius:50%;background:var(--line);color:var(--ink);display:grid;place-items:center;font-size:.8rem}
 .steps li.cur{border-color:var(--indigo);color:var(--ink)}
 .steps li.cur .sn{background:var(--indigo);color:#fff}
@@ -226,7 +256,8 @@ footer nav a{display:inline-flex;align-items:center;min-height:44px;font-weight:
 .fbar nav{gap:8px}
 .fbar nav a{border:2px solid var(--line);border-radius:999px;padding:0 18px;background:var(--card);color:var(--link);text-decoration:none;font-weight:700}
 .fbar nav a:hover{background:var(--indigo);border-color:var(--indigo);color:#fff}
-.fver{font-size:.85rem}
+.fver{font-size:.85rem}.fver[hidden]{display:none}
+.fhome{display:flex;justify-content:center;margin:0 0 18px}.fhome[hidden]{display:none}.fhome .btn{gap:10px;min-width:min(100%,320px)}
 @media (max-width:620px){.fbook{grid-template-columns:auto 1fr}.fbook .btn{grid-column:1/-1;white-space:normal;text-align:center}}
 .pwa{position:fixed;left:10px;right:10px;bottom:10px;z-index:60;display:none;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--deep);color:#fff;border-radius:16px;padding:12px 16px;box-shadow:var(--shadow)}
 .pwa.show{display:flex}
@@ -274,6 +305,7 @@ footer nav a{display:inline-flex;align-items:center;min-height:44px;font-weight:
       <li>TelefonSeelsorge: <a href="tel:08001110111">0800 111 0 111</a> oder <a href="tel:08001110222">0800 111 0 222</a></li>
     </ul>
   </div>
+  <div class="fhome" id="fhome" hidden><button type="button" class="btn ghost" id="fhomebtn"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></svg><span>Zur Startseite</span></button></div>
   <div class="fbar">
     <nav aria-label="Rechtliches"><a href="../index.html">Webseite</a><a href="../impressum.html">Impressum</a><a href="../datenschutz.html">Datenschutz</a></nav>
     <span class="fver">Version <span id="ver"></span></span>
@@ -302,7 +334,7 @@ footer nav a{display:inline-flex;align-items:center;min-height:44px;font-weight:
   });
 })();
 "use strict";
-const KEY = "wmiw_app_v1", VERSION = "1.1.21", STAND = "15.10.2026";
+const KEY = "wmiw_app_v1", VERSION = "1.1.34", STAND = "15.10.2026";
 const AMAZON = "https://www.amazon.de/Was-mache-ich-wenn-Situationen/dp/B0FKZ4T17T";
 const LION = "data:image/jpeg;base64,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";
 /* ---------- Inhalte: aus dem Buch „Was mache ich, wenn…?“ von Nathalie Barth ---------- */
@@ -530,25 +562,64 @@ const modById = id => MODULES.find(m => m.id === id);
 
 /* ---------- Ansichten ---------- */
 function setTitle(t){ document.title = t ? t + " – WAS MACHE ICH WENN APP" : "WAS MACHE ICH WENN APP – Nathalie Barth"; }
+function syncHH(){
+  const r = document.documentElement.style, e = document.querySelector(".hd"), n = document.querySelector(".stickynav");
+  if(e) r.setProperty("--hh", e.getBoundingClientRect().height + "px");
+  r.setProperty("--nh", n ? n.getBoundingClientRect().height + "px" : "0px");   // Leiste und Kopfzeile verdecken beim Springen und per Tab nichts
+  stuckPruefen();
+}
+function stuckPruefen(){
+  const n = document.querySelector(".stickynav"); if(!n) return;
+  const top = parseFloat(getComputedStyle(n).top) || 0;
+  n.classList.toggle("stuck", scrollY > 2 && n.getBoundingClientRect().top <= top + 1);
+}
+addEventListener("resize", syncHH);
+let stuckBusy = false;
+addEventListener("scroll", () => { if(stuckBusy) return; stuckBusy = true; requestAnimationFrame(() => { stuckBusy = false; stuckPruefen(); }); }, {passive:true});
 function render(focus = true){
   const pi = $("#pwa-inst"); if(pi && view.v !== "home") pi.classList.remove("show");
+  const fh = $("#fhome"); if(fh){ fh.hidden = view.v === "home"; const fb2 = $("#fhomebtn"); if(fb2 && !fb2.onclick) fb2.onclick = () => go("home"); }   // Fußzeile mit Weg zur Startseite auf allen Seiten außer der Startseite
+  const fv = $(".fver"); if(fv) fv.hidden = view.v !== "home";   // Version nur auf der ersten Seite
   const fb = $(".fbook"); if(fb) fb.hidden = view.v !== "home";   // der Buch-Block (mit Amazon-Knopf) steht nur auf der Uebersicht
   const hb = $("#hilfe"); if(hb) hb.hidden = view.v !== "home";   // "Hilfe finden" gehört nur auf die Übersicht   // der feste Installations-Hinweis soll Lektionen, Quiz und Ergebnis nicht verdecken
   const m = $("#main"); m.replaceChildren();
   ({home:renderHome, lesson:renderLesson, gate:renderGate, quiz:renderQuiz, result:renderResult, certs:renderCerts}[view.v] || renderHome)(m);
+  syncHH();
   if(focus){ const t = $("#main h1"); if(t){ t.setAttribute("tabindex", "-1"); t.focus({preventScroll:true}); } window.scrollTo(0, 0); }
 }
 function go(v, extra){ view = Object.assign({v}, extra || {}); render(); }
 const CHEV = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 function backBtn(label, fn, ctx){ const b = h("button", {type:"button", class:"backbtn", "aria-label":label + (ctx ? ": " + ctx : ""), onclick:fn}); b.innerHTML = CHEV; b.append(label); return b; }
+const STEPPATH = {
+  book:'<path d="M2 5.5C2 4.7 2.7 4 3.5 4H10a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H3.5A1.5 1.5 0 0 1 2 16.5z"/><path d="M22 5.5c0-.8-.7-1.5-1.5-1.5H14a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h6.5a1.5 1.5 0 0 0 1.5-1.5z"/>',
+  quiz:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.6a2.6 2.6 0 1 1 3.7 2.3c-.8.4-1.2 1-1.2 1.8"/><path d="M12 17.2h.01"/>',
+  award:'<circle cx="12" cy="9" r="6"/><path d="M8.5 14.5 7 22l5-3 5 3-1.5-7.5"/>',
+  trophy:'<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>',
+  lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+  check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>'
+};
+/* Symbol im Schritt: Haken = erledigt, Schloss = gesperrt, sonst Buch (Lesen), Fragezeichen (Quiz), Pokal/Auszeichnung (Nachweis) */
+function stepIcon(i, erledigt, gesperrt){
+  const name = erledigt ? "check" : gesperrt ? "lock" : ["book", "quiz", "award"][i], s = h("span", {class:"sn", "aria-hidden":"true"});
+  s.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" focusable="false">' + STEPPATH[name] + '</svg>';
+  return s;
+}
 function stepper(n){
-  const S = ["Lesen", "Quiz", "Bestätigung"];
-  return h("ol", {class:"steps", "aria-label":"Ablauf eines Moduls: Lesen, Quiz, Bestätigung"}, S.map((x, i) => {
-    const at = {class:i + 1 === n ? "cur" : (i + 1 < n ? "done" : "")}; if(i + 1 === n) at["aria-current"] = "step";
-    return h("li", at, h("span", {class:"sn", "aria-hidden":"true", text:i + 1 < n ? "✓" : String(i + 1)}), x);
+  const S = ["Lesen", "Quiz", "Bestätigung"], l = modById(view.id);
+  const ziel = l ? [() => go("lesson", {id:l.id}), () => startQuiz(l), () => go("certs", {id:l.id})] : [];
+  const frei = [true, true, !!l && earned(l)];
+  return h("ol", {class:"steps", "aria-label":"Ablauf eines Moduls: Lesen, Quiz, Bestätigung. Die Schritte sind Knöpfe. Die Bestätigung gibt es nach dem bestandenen Quiz."}, S.map((x, i) => {
+    const cur = i + 1 === n, at = {class:(cur ? "cur" : (i + 1 < n ? "done" : "")) + (!cur && !frei[i] ? " lock" : "")}; if(cur) at["aria-current"] = "step";
+    const inner = [stepIcon(i, i + 1 < n, !cur && !frei[i]), h("span", {class:"sl", text:x})];
+    if(cur || !l) return h("li", at, h("span", {class:"si"}, inner));
+    return h("li", at, h("button", {type:"button", class:"si", disabled: frei[i] ? null : "", title: frei[i] ? ("Zu: " + x) : "Erst das Quiz bestehen", "aria-label": frei[i] ? x : x + " (erst nach bestandenem Quiz)", onclick: ziel[i]}, inner));
   }));
 }
-function crumb(label, fn, where){ return h("div", {class:"crumbbar"}, backBtn(label, fn), where ? h("span", {class:"where", text:where}) : null); }
+function stickynav(...kids){ return h("div", {class:"stickynav"}, kids.flat().filter(Boolean)); }
+function crumb(label, fn, where){
+  const m = where && /(\d+) von (\d+)/.exec(where);   // lang: "Modul 2 von 7", auf dem Handy kurz: "2/7"
+  return h("div", {class:"crumbbar"}, backBtn(label, fn), where ? h("span", {class:"where"}, h("span", {class:"wl", text:where}), m ? h("span", {class:"ws", "aria-hidden":"true", text:m[1] + "/" + m[2]}) : null) : null);
+}
 
 function renderHome(m){
   setTitle("");
@@ -615,9 +686,9 @@ function askReset(){
 function renderLesson(m){
   const l = modById(view.id); if(!l){ go("home"); return; }
   setTitle(l.t);
-  m.append(crumb("Übersicht", () => go("home"), "Modul " + (MODULES.indexOf(l) + 1) + " von " + MODULES.length), stepper(1));
+  m.append(stickynav(crumb("Startseite", () => go("home"), "Modul " + (MODULES.indexOf(l) + 1) + " von " + MODULES.length), stepper(1)));
   m.append(h("div", {class:"lhead", style:"background:" + l.c},
-    h("h1", {id:"h1", text:l.ico + " " + l.t}), h("p", {text:l.sub + " · ca. " + l.min + " Min."})));
+    h("h1", {id:"h1", text:l.ico + " " + l.t}), h("p", null, h("span", {class:"mobonly", text:"Modul " + (MODULES.indexOf(l) + 1) + " von " + MODULES.length + " · "}), l.sub + " · ca. " + l.min + " Min.")));
   if(earned(l)){
     m.append(h("section", {class:"donecard", "aria-labelledby":"dcT"},
       h("span", {class:"dc-i", "aria-hidden":"true"}, "✅"),
@@ -651,14 +722,14 @@ function renderGate(m){
     h("p", {class:"note", style:"margin-top:8px", text:"Dein Name bleibt auf diesem Gerät. Du kannst ihn später jederzeit ändern."}),
     h("div", {class:"row"}, h("button", {type:"submit", class:"btn"}, "Weiter zum Quiz"), h("button", {type:"button", class:"link", onclick:() => go2(true)}, "Weiter ohne Namen")));
   form.onsubmit = e => { e.preventDefault(); go2(false); };
-  m.append(crumb("Zurück zum Modul", () => go("lesson", {id:l.id}), "Kurz vorab"), stepper(2), form);
+  m.append(stickynav(crumb("Startseite", () => go("home"), "Modul " + (MODULES.indexOf(l) + 1) + " von " + MODULES.length), stepper(2)), form);
 }
 function renderQuiz(m){
   const l = modById(view.id), total = l.q.length, qd = l.q[view.order[view.n].i], ans = view.order[view.n].a; setTitle("Quiz: " + l.t);
   const answered = view.picked != null;
-  m.append(crumb("Zum Modul", () => go("lesson", {id:l.id}), "Quiz · Modul " + (MODULES.indexOf(l) + 1) + " von " + MODULES.length), stepper(2));
-  m.append(h("p", {class:"qp"}, "Frage " + (view.n + 1) + " von " + total + " · " + l.t));
-  m.append(h("div", {class:"bar", role:"progressbar", "aria-valuemin":"0", "aria-valuemax":String(total), "aria-valuenow":String(view.n + (answered ? 1 : 0)), "aria-label":"Fortschritt im Quiz"}, h("i", {style:"width:" + Math.round((view.n + (answered ? 1 : 0)) / total * 100) + "%"})));
+  m.append(stickynav(crumb("Startseite", () => go("home"), "Modul " + (MODULES.indexOf(l) + 1) + " von " + MODULES.length), stepper(2),
+    h("p", {class:"qp"}, "Frage " + (view.n + 1) + " von " + total + " · " + l.t),
+    h("div", {class:"bar", role:"progressbar", "aria-valuemin":"0", "aria-valuemax":String(total), "aria-valuenow":String(view.n + (answered ? 1 : 0)), "aria-label":"Fortschritt im Quiz"}, h("i", {style:"width:" + Math.round((view.n + (answered ? 1 : 0)) / total * 100) + "%"}))));
   m.append(h("h1", {class:"qt", id:"h1", text:qd.q}));
   const box = h("div", {class:"ans", role:"group", "aria-label":"Antworten"});
   ans.forEach((a, i) => {
@@ -687,7 +758,7 @@ function finishQuiz(l){
 function renderResult(m){
   const l = modById(view.id), total = l.q.length, pass = view.st >= 1; setTitle("Ergebnis");
   const nextL = MODULES.find(x => !earned(x));
-  m.append(stepper(3));
+  m.append(stickynav(crumb("Startseite", () => go("home"), "Modul " + (MODULES.indexOf(l) + 1) + " von " + MODULES.length), stepper(pass ? 3 : 2)));
   m.append(h("section", {class:"panel res", "aria-labelledby":"h1"},
     h("h1", {id:"h1", text: pass ? (hasName() ? fill("Modul geschafft, {n}!") : "Modul geschafft!") : (hasName() ? fill("Noch nicht ganz, {n}.") : "Noch nicht ganz.")}),
     h("div", {class:"stars", role:"img", "aria-label":view.st + " von 3 Sternen"}, starsText(view.st)),
@@ -744,7 +815,8 @@ function renderCerts(m){
   if(sel || showMaster){
     const l = showMaster ? null : sel;
     setTitle(l ? "Bestätigung: " + l.t : "Zertifikat");
-    m.append(crumb("Alle Bestätigungen", () => go("certs", {}), l ? "Modul " + (MODULES.indexOf(l) + 1) + " von " + MODULES.length : "Alle sieben Module geschafft"));
+    if(l) m.append(stickynav(crumb("Startseite", () => go("home"), "Modul " + (MODULES.indexOf(l) + 1) + " von " + MODULES.length), stepper(3)));
+    else m.append(stickynav(crumb("Alle Bestätigungen", () => go("certs", {}), "Alle sieben Module geschafft")));
     m.append(h("h1", {id:"h1", text:l ? "Deine Teilnahmebestätigung" : "Dein Zertifikat"}));
     m.append(h("p", {class:"csub", text:l ? l.ico + " " + l.t : "🏆 Kinder im Alltag stärken"}));
     const fld = h("div", {class:"field"}, h("label", {for:"cname", text:"Dein Name auf der Bestätigung"}), h("input", {id:"cname", type:"text", maxlength:"40", autocomplete:"name", value:nm, placeholder:"Dein Name"}));
@@ -757,6 +829,7 @@ function renderCerts(m){
       h("h2", {class:"chint", text:"Wie geht es weiter?"}),
       h("div", {class:"cgrid"},
         l ? h("button", {type:"button", class:"ctile", onclick:() => go("lesson", {id:l.id})}, h("span", {class:"ci", "aria-hidden":"true"}, "↺"), h("span", null, h("b", {text:"Modul nochmal machen"}), h("small", {text:"Noch einmal lesen und das Quiz wiederholen, um mehr Sterne zu holen."}))) : null,
+        l ? h("button", {type:"button", class:"ctile", onclick:() => go("certs", {})}, h("span", {class:"ci", "aria-hidden":"true"}, "☰"), h("span", null, h("b", {text:"Alle Bestätigungen"}), h("small", {text:"Alle deine geschafften Module auf einen Blick."}))) : null,
         l && MODULES[MODULES.indexOf(l) + 1] ? h("button", {type:"button", class:"ctile pri", onclick:() => go("lesson", {id:MODULES[MODULES.indexOf(l) + 1].id})}, h("span", {class:"ci", "aria-hidden":"true"}, "→"), h("span", null, h("b", {text:"Nächstes Modul"}), h("small", {text:MODULES[MODULES.indexOf(l) + 1].ico + " " + MODULES[MODULES.indexOf(l) + 1].t}))) : null,
         !l ? h("button", {type:"button", class:"ctile pri", onclick:() => go("home")}, h("span", {class:"ci", "aria-hidden":"true"}, "⌂"), h("span", null, h("b", {text:"Zur Übersicht"}), h("small", {text:"Alle Module und deine Sterne auf einen Blick."}))) : null));
     const weitere = MODULES.filter(x => earned(x) && x !== l);
@@ -769,7 +842,7 @@ function renderCerts(m){
   }
   /* Listenansicht */
   setTitle("Meine Bestätigungen");
-  m.append(crumb("Übersicht", () => go("home"), T.dn + " von " + MODULES.length + " Modulen geschafft"));
+  m.append(stickynav(crumb("Startseite", () => go("home"), T.dn + " von " + MODULES.length + " Modulen geschafft")));
   m.append(h("h1", {id:"h1", text:"Meine Bestätigungen"}));
   m.append(h("p", {text:"Für jedes geschaffte Modul gibt es eine Teilnahmebestätigung. Tippe auf ein Modul: Ist es geschafft, siehst du die Bestätigung. Ist es noch offen, startest du es direkt."}));
   m.append(h("div", {class:"csum"},

@@ -139,3 +139,48 @@ document.querySelectorAll("a[data-angebot]").forEach(a => { a.href = mailLink(a.
   how.addEventListener("click", iosDialog);
   window.addEventListener("appinstalled", () => { fertig = true; card.classList.remove("show"); });
 })();
+
+/* Diagnose: nur sichtbar mit ?diag=1 hinter der Adresse. Zeigt, warum der Browser die Installation anbietet oder nicht. */
+(function () {
+  if (!/[?&]diag\b/.test(location.search)) return;
+  var box = document.createElement("pre");
+  box.style.cssText = "white-space:pre-wrap;word-break:break-word;font:12px/1.5 ui-monospace,Consolas,monospace;background:#111;color:#9f9;padding:12px;margin:10px;border-radius:12px;position:relative;z-index:200";
+  document.body.insertBefore(box, document.body.firstChild);
+  var t0 = Date.now(), bip = "NEIN (bisher nicht eingetroffen)", man = null, icons = [], swv = "?";
+  window.addEventListener("beforeinstallprompt", function () { bip = "JA, nach " + Math.round((Date.now() - t0) / 1000) + " s"; });
+  window.addEventListener("appinstalled", function () { bip += " | appinstalled erhalten"; });
+  (async function () {
+    try {
+      var l = document.querySelector('link[rel="manifest"]'); var r = await fetch(l.href, { cache: "reload" }); man = await r.json(); man._status = r.status;
+      for (var i = 0; i < (man.icons || []).length; i++) {
+        var ic = man.icons[i], im = new Image();
+        var pr = new Promise(function (ok, no) { im.onload = ok; im.onerror = no; setTimeout(no, 5000); });
+        im.src = new URL(ic.src, l.href).href;
+        try { await pr; icons.push(ic.src + " " + im.naturalWidth + "x" + im.naturalHeight + " (" + ic.purpose + ")"); } catch (e) { icons.push(ic.src + " FEHLT/NICHT LESBAR"); }
+      }
+    } catch (e) { man = { _fehler: String(e) }; }
+    try { var s = await (await fetch("sw.js", { cache: "reload" })).text(); swv = (s.match(/VERSION = "([^"]+)"/) || [0, "?"])[1]; } catch (e) {}
+  })();
+  async function show() {
+    var reg = "serviceWorker" in navigator ? await navigator.serviceWorker.getRegistration() : null;
+    var host = location.origin === "https://www.mutige-kinderherzen.de" ? "ok (https://www.mutige-kinderherzen.de)" : (/localhost|127\.0\.0\.1/.test(location.hostname) ? "lokaler Test" : "ABWEICHEND: " + location.origin + " (richtig wäre https://www.mutige-kinderherzen.de)");
+    var karte = document.querySelector("#install.show,#pwa-inst.show");
+    var L = [
+      "Diagnose, Dateiversion laut sw.js: " + swv,
+      "Adresse: " + location.href,
+      "Ursprung: " + host,
+      "Sicherer Kontext (HTTPS): " + (window.isSecureContext ? "ja" : "NEIN"),
+      "Als App geöffnet (standalone): " + ((matchMedia("(display-mode: standalone)").matches || navigator.standalone) ? "JA" : "nein"),
+      "Service Worker: " + (reg ? "registriert, Bereich " + reg.scope + ", Status " + (reg.active ? reg.active.state : "nicht aktiv") : "NICHT registriert") + " | steuert Seite: " + (navigator.serviceWorker && navigator.serviceWorker.controller ? "ja (" + navigator.serviceWorker.controller.scriptURL + ")" : "nein"),
+      "Manifest: " + (man ? (man._fehler ? "FEHLER " + man._fehler : "HTTP " + man._status + ", id=" + man.id + ", start_url=" + man.start_url + ", scope=" + man.scope + ", display=" + man.display) : "wird geladen ..."),
+      "Icons: " + (icons.length ? icons.join(" | ") : "..."),
+      "Installationsangebot des Browsers (beforeinstallprompt): " + bip,
+      "Installieren-Karte in der Seite: " + (karte ? "sichtbar" : "nicht sichtbar"),
+      "Browser: " + navigator.userAgent,
+      "",
+      "Bleibt beforeinstallprompt auf NEIN (mindestens 10 s warten), hält der Browser die App für bereits installiert oder nicht installierbar. Dann im Browser-Menü (3 Punkte) nachsehen, ob 'App installieren' oder 'App öffnen' steht. Hinweis: Webseite und App liegen im selben Ursprung; die Webseite (Bereich /) umschließt die App (Bereich /was-mache-ich-wenn-app/)."
+    ];
+    box.textContent = L.join("\n");
+  }
+  show(); setInterval(show, 1500);
+})();

@@ -408,3 +408,4 @@ footer .install{color:var(--ink);margin:0 0 18px}
 @media (max-width:560px){.fcard{padding:18px 18px}.fnav{width:100%}.fpill{flex:1 1 auto}}
 body:has(.upd.show) footer{padding-bottom:96px}
 @media print{.fcard{box-shadow:none}}
+[hidden]{display:none!important}

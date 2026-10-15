@@ -4,7 +4,7 @@
 
 # NATBARTH: Webseite und App für Nathalie Barth
 
-Moderne, motivierende Webseite für Nathalie Barth (Selbstbehauptungs- und Resilienztraining für Kinder, „Mutige Kinderherzen“) mit Kursen und Terminen direkt unter dem Einstieg, starkem Fokus auf den Ratgeber **„Was mache ich, wenn…?“** und der Lern-App **WAS MACHE ICH WENN APP**. Alles ist statisch (HTML, CSS, JS), läuft ohne Server-Code und ist als PWA installierbar. Stand: Version 1.0.47, 15.10.2026.
+Moderne, motivierende Webseite für Nathalie Barth (Selbstbehauptungs- und Resilienztraining für Kinder, „Mutige Kinderherzen“) mit Kursen und Terminen direkt unter dem Einstieg, starkem Fokus auf den Ratgeber **„Was mache ich, wenn…?“** und der Lern-App **WAS MACHE ICH WENN APP**. Alles ist statisch (HTML, CSS, JS), läuft ohne Server-Code und ist als PWA installierbar. Stand: Version 1.0.48, 15.10.2026.
 
 > **Veröffentlichung:** Die Seite ersetzt die alte Webseite unter `https://www.mutige-kinderherzen.de/` (Hosting bei IONOS, Frankfurt; per DNS, IP-Zuordnung, MX und SPF geprüft). Die absoluten Adressen für Link-Vorschau (`og:image`, `canonical`, JSON-LD) in `index.html` und `was-mache-ich-wenn-app/app.html` zeigen auf diese Domain. Eine Testadresse bei GitHub Pages dient **nur zum Testen** und darf nirgends in der Seite stehen; maßgeblich ist immer `https://www.mutige-kinderherzen.de/` (Link-Vorschau-Bilder erscheinen in Messengern erst dort). Alle anderen Verweise sind relativ. Dateinamen der alten Seite (`index.html`, `impressum.html`) bleiben gleich, die alten Anker (`#article04-1a` Kurse, `#list01-3` Fragen, `#form02-s` Anfrage) führen weiter an die passenden Stellen.
 
@@ -57,7 +57,7 @@ Lern-App nach dem Buch, seriös gestaltet: 7 Module (Gefühle, Wut und Traurigke
 * **Fenster:** Alle Amazon-Links öffnen in einem neuen Tab mit dem festen Namen `amazon-buch`, alle Links zur App in einem Tab mit dem Namen `wmiw-app`. Ein erneuter Klick lädt dasselbe Fenster neu, statt jedes Mal ein weiteres zu öffnen. Dafür darf an diesen Links **kein** `rel="noopener"` oder `noreferrer` stehen (beides verhindert die Wiederverwendung). Alle anderen Links öffnen im gleichen Tab.
 * **Ziele:** Amazon `https://www.amazon.de/Was-mache-ich-wenn-Situationen/dp/B0FKZ4T17T` (Titel der Zielseite geprüft), WhatsApp-Kanal, Instagram, `wa.me/491603148838`; eine Mail-Adresse und die Telefonnummern aus `quellen/link_vorgaben.json`.
 * **Prüfung vor jeder Lieferung:** `links_pruefen_projekt.ps1` (Skill-Ordner `assets`) mit `quellen/link_vorgaben.json` und `-EigeneBasis https://www.mutige-kinderherzen.de/`, Ergebnis in `quellen/linktest_NATBARTH.md`; dazu der Browser-Test `testsuite_klickziele.js` (trifft ein Klick wirklich den jeweiligen Link, mehrere Breiten).
-## Tests (15.10.2026, Version 1.0.47)
+## Tests (15.10.2026, Version 1.0.48)
 
 * UX-Suite U1 bis U10 (320, 360, 390 px, Querformat) für Startseite, Impressum, Datenschutz und App, jeweils hell und dunkel: alle bestanden.
 * App-Ansichten (Überlauf, Schriftgröße, Kontrast, Tippziele, Ränder) für Start, Modul, Quiz, Ergebnis, Bestätigungen und Namensabfrage, hell und dunkel; alle 7 Module durchgespielt (Sterne, Persistenz, schlechtere Folgerunde ändert den besten Stand nicht), 40 Urkundenvarianten mit langen Namen und Sonderzeichen.
@@ -79,6 +79,7 @@ Lern-App nach dem Buch, seriös gestaltet: 7 Module (Gefühle, Wut und Traurigke
 
 ## Änderungsprotokoll
 
+- 1.0.48 (15.10.2026): Prüfung mit `assets/testsuite_a11y.js` (WCAG 2.2 AA, Auswahl): Startseite, Impressum, Datenschutz und alle App-Ansichten (Übersicht, Lektion offen und fertig, Namensabfrage, Quiz, Ergebnis, Bestätigung) bei 360 px: nur zwei Befunde. Website 1.0.37: Die Quellenlinks „e-recht24.de“ in Impressum und Datenschutz haben jetzt eine Klickhöhe von 40 px (vorher 19 bis 22 px; WCAG 2.2 verlangt mindestens 24 px). App 1.1.18: In einem fertigen Modul stehen „Bestätigung ansehen“ und „Quiz wiederholen“ nur noch in der Karte oben, die doppelten Knöpfe unter dem Text sind entfernt; die Sterne in der Karte sind dunkler (Kontrast 3,25:1 auf 5,4:1). Nicht geändert: Die Texte der Rechtsseiten (zwei Quellenzeilen am Ende der Datenschutzerklärung stammen aus dem Generator) sind Rechtstext und bleiben unangetastet.
 - 1.0.47 (15.10.2026): App 1.1.17: Der Block „Hilfe finden“ erscheint nur noch auf der Übersicht (Startseite), nicht mehr unter jeder Lektion, jedem Quiz und jeder Bestätigung. Der Hinweis „Du bist nicht allein“ in den betroffenen Modulen führt per Klick zur Übersicht und springt zum Block.
 - 1.0.46 (15.10.2026): App 1.1.16: „Fortschritt zurücksetzen“ ist kein Textlink mehr, sondern ein Knopf mit Erklärung („Löscht deine geschafften Module, Sterne und Bestätigungen. Dein Name bleibt gespeichert.“); die Rückfrage ist ein eigenes Fenster mit „Abbrechen“ und „Ja, zurücksetzen“ statt der Browser-Abfrage.
 - 1.0.45 (15.10.2026): App 1.1.15: Die Seite der Bestätigung hat unter „Als Bild speichern“ und „Drucken“ den Bereich „Wie geht es weiter?“ mit großen Karten: „Modul nochmal machen“ (Lesen und Quiz wiederholen) und „Nächstes Modul“ (hervorgehoben); beim Zertifikat „Zur Übersicht“.

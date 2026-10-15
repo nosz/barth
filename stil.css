@@ -334,6 +334,7 @@ footer a{display:inline-flex;align-items:center;min-height:44px;color:var(--link
 .doc .caps{font-size:.92rem}
 .doc .addr{font-style:normal;font-size:1.1rem}
 .doc .src{font-size:.88rem;color:var(--mute)}
+.doc a[href*="e-recht24"]{display:inline-block;box-sizing:border-box;min-height:40px;padding:8px 0;line-height:24px;overflow-wrap:anywhere}
 .backlink{display:inline-flex;align-items:center;min-height:44px;margin-top:22px;font-weight:700}
 
 @media (max-width:980px){

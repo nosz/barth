@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<script>/* Einheitliche Adresse: http und die Variante ohne www werden auf https://www.mutige-kinderherzen.de umgeleitet (Absicherung; die eigentliche Weiterleitung gehört in die Domain-Einstellungen des Hosters). Lokale Tests und andere Hosts bleiben unberührt. */(function(){var h=location.hostname,p=location.protocol;if(h==="mutige-kinderherzen.de"||(h==="www.mutige-kinderherzen.de"&&p==="http:")){location.replace("https://www.mutige-kinderherzen.de"+location.pathname+location.search+location.hash);}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>WAS MACHE ICH WENN APP – Nathalie Barth</title>
 <meta name="description" content="Kinder im Alltag stärken: kurze Lektionen, Merksätze, Quiz und Teilnahmebestätigung. Aus dem Buch „Was mache ich, wenn…?“ von Nathalie Barth.">
@@ -142,7 +143,37 @@ main{padding:22px 18px 40px;outline:0}
 .res{text-align:center}
 .crow{display:grid;gap:10px}
 .cbtn{display:flex;gap:12px;align-items:center;width:100%;text-align:left;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:12px 16px;min-height:60px;color:var(--ink);font:inherit;cursor:pointer}
-.cbtn[disabled]{opacity:.6;cursor:default}
+.cbtn>span:nth-child(2){flex:1;min-width:0}
+.cbtn:hover{border-color:var(--indigo)}
+.cbtn.open{border-style:dashed;background:transparent}
+.cbtn.open:hover{background:var(--card)}
+.cgo{margin-left:auto;flex:none;font-weight:700;font-size:.88rem;color:var(--link);white-space:nowrap}
+.cgo.done{color:var(--mute);font-weight:600}
+.backbtn{display:inline-flex;align-items:center;gap:4px;min-height:44px;padding:0 18px 0 10px;border-radius:999px;border:2px solid var(--line);background:var(--card);color:var(--link);font:700 .95rem system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;cursor:pointer;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.backbtn svg{width:20px;height:20px;flex:none}
+.backbtn:hover{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.backbtn:focus-visible,.cbtn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.crumbbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px;margin:2px 0 14px}
+.crumbbar .where{font-size:.9rem;color:var(--mute);font-weight:600}
+.modnav{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:26px;padding-top:18px;border-top:1px solid var(--line)}
+.csum{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:14px 18px;margin:14px 0 16px}
+.csum>div{flex:1 1 220px;min-width:0}.csum b{display:block;margin-bottom:6px}.csum .bar{margin:0}
+.cempty{background:var(--card);border:2px dashed var(--line);border-radius:var(--r);padding:20px 22px;margin-top:16px}
+.cempty p{margin:0 0 12px}
+.nextcard{background:var(--card);border:2px solid var(--indigo);border-radius:var(--r);padding:18px 20px;margin-top:16px;box-shadow:var(--shadow)}
+.nextcard small{display:block;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--pink);font-size:.78rem;margin-bottom:4px}
+.nextcard h2{margin:0 0 4px;font-size:1.25rem}
+.nextcard p{margin:0 0 12px;color:var(--mute)}
+.nextcard .row{display:flex;flex-wrap:wrap;gap:10px}
+.steps{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 16px}
+.steps li{display:flex;align-items:center;gap:8px;padding:5px 14px 5px 6px;border-radius:999px;background:var(--card);border:2px solid var(--line);font-weight:700;font-size:.9rem;color:var(--mute)}
+.steps .sn{width:24px;height:24px;border-radius:50%;background:var(--line);color:var(--ink);display:grid;place-items:center;font-size:.8rem}
+.steps li.cur{border-color:var(--indigo);color:var(--ink)}
+.steps li.cur .sn{background:var(--indigo);color:#fff}
+.steps li.done .sn{background:var(--ok);color:#fff}
+.csub{margin:-4px 0 14px;font-weight:700;color:var(--mute)}
+.cchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.cchips .btn{min-height:44px}
 .cbtn[aria-pressed="true"]{border-color:var(--indigo);box-shadow:var(--shadow)}
 .cbox{background:#fff;border-radius:12px;box-shadow:var(--shadow);margin:14px 0;overflow:hidden}
 .cbox svg{width:100%;height:auto}
@@ -173,6 +204,7 @@ footer nav a{display:inline-flex;align-items:center;min-height:44px;font-weight:
 .pwa.show{display:flex}
 .pwa span{flex:1 1 200px}
 .pwa .btn{min-height:44px}
+[hidden]{display:none!important}
 .instol{margin:12px 0 0;padding-left:22px}.instol li{margin:8px 0}
 .visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:620px){
@@ -239,7 +271,7 @@ footer nav a{display:inline-flex;align-items:center;min-height:44px;font-weight:
   });
 })();
 "use strict";
-const KEY = "wmiw_app_v1", VERSION = "1.0.8", STAND = "15.10.2026";
+const KEY = "wmiw_app_v1", VERSION = "1.1.4", STAND = "15.10.2026";
 const AMAZON = "https://www.amazon.de/Was-mache-ich-wenn-Situationen/dp/B0FKZ4T17T";
 const LION = "data:image/jpeg;base64,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";
 /* ---------- Inhalte: aus dem Buch „Was mache ich, wenn…?“ von Nathalie Barth ---------- */
@@ -473,6 +505,16 @@ function render(focus = true){
   if(focus){ const t = $("#main h1"); if(t){ t.setAttribute("tabindex", "-1"); t.focus({preventScroll:true}); } window.scrollTo(0, 0); }
 }
 function go(v, extra){ view = Object.assign({v}, extra || {}); render(); }
+const CHEV = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function backBtn(label, fn, ctx){ const b = h("button", {type:"button", class:"backbtn", "aria-label":label + (ctx ? ": " + ctx : ""), onclick:fn}); b.innerHTML = CHEV; b.append(label); return b; }
+function stepper(n){
+  const S = ["Lesen", "Quiz", "Bestätigung"];
+  return h("ol", {class:"steps", "aria-label":"Ablauf eines Moduls: Lesen, Quiz, Bestätigung"}, S.map((x, i) => {
+    const at = {class:i + 1 === n ? "cur" : (i + 1 < n ? "done" : "")}; if(i + 1 === n) at["aria-current"] = "step";
+    return h("li", at, h("span", {class:"sn", "aria-hidden":"true", text:i + 1 < n ? "✓" : String(i + 1)}), x);
+  }));
+}
+function crumb(label, fn, where){ return h("div", {class:"crumbbar"}, backBtn(label, fn), where ? h("span", {class:"where", text:where}) : null); }
 
 function renderHome(m){
   setTitle("");
@@ -489,6 +531,14 @@ function renderHome(m){
       h("div", {class:"stat", role:"listitem"}, h("b", {text:"★ " + T.st + "/" + MODULES.length * 3}), h("span", {text:"Sterne"}))),
     hasName() ? h("button", {type:"button", class:"namebtn", "aria-label":"Name ändern: " + fname(), onclick:() => { editName = true; focusName = true; render(false); }}, h("span", {"aria-hidden":"true"}, "✎"), h("span", {text:fname() + " · Name ändern"}))
               : ((ach.skip && !editName) ? h("button", {type:"button", class:"namebtn", onclick:() => { editName = true; focusName = true; render(false); }}, h("span", {"aria-hidden":"true"}, "✎"), h("span", {text:"Name eintragen"})) : null)));
+  const nm1 = MODULES.find(x => !earned(x)), alle = T.dn === MODULES.length;
+  m.append(h("section", {class:"nextcard", "aria-labelledby":"nx"},
+    h("small", {text:T.dn === 0 ? "Starte hier" : (alle ? "Alles geschafft" : "Dein nächster Schritt")}),
+    h("h2", {id:"nx", text:alle ? "Du hast alle sieben Module geschafft" : nm1.ico + " " + nm1.t}),
+    h("p", {text:alle ? "Schau dir dein Zertifikat an oder stöbere noch einmal durch die Module." : nm1.sub + " · ca. " + nm1.min + " Min."}),
+    h("div", {class:"row"},
+      alle ? h("button", {type:"button", class:"btn", onclick:() => go("certs", {id:"master"})}, "Zertifikat ansehen") : h("button", {type:"button", class:"btn", onclick:() => go("lesson", {id:nm1.id})}, T.dn === 0 ? "Los geht’s" : "Weiterlernen"),
+      T.dn > 0 ? h("button", {type:"button", class:"btn ghost", onclick:() => go("certs", {})}, "Meine Bestätigungen") : null)));
   if((!hasName() && !ach.skip) || editName){
     const inp = h("input", {id:"nmq", type:"text", maxlength:"40", autocomplete:"given-name", placeholder:"Dein Vorname oder Name", value:nm});
     const done = v => { nm = v.trim().slice(0, 40); editName = false; ach.skip = !nm; save(); render(false); };
@@ -512,9 +562,7 @@ function renderHome(m){
         h("span", {class:"ic", style:"background:" + l.c, "aria-hidden":"true", text:l.ico}),
         h("span", null, h("b", {text:l.t}), h("small", {text:l.sub + " · ca. " + l.min + " Min."})),
         h("span", {class:"st" + (earned(l) ? " done" : ""), text:earned(l) ? "✓ " + starsText(stars(l)) : (l === next ? "Weiter" : "")})))))));
-  m.append(h("div", {class:"actions"},
-    h("button", {type:"button", class:"btn", onclick:() => go("lesson", {id:next.id})}, T.dn === 0 ? "Los geht’s" : (T.dn === MODULES.length ? "Nochmal stöbern" : "Weiterlernen")),
-    h("button", {type:"button", class:"btn ghost", onclick:() => go("certs", {})}, "Meine Bestätigungen")));
+  if(T.dn === 0) m.append(h("div", {class:"actions"}, h("button", {type:"button", class:"btn ghost", onclick:() => go("certs", {})}, "Meine Bestätigungen")));
   m.append(h("section", {class:"sec"}, h("div", {class:"panel"}, h("h2", {text:"Mehr im Buch"}),
     h("p", {text:"Hier siehst du nur die wichtigsten Ideen. Das Buch geht in jede Situation tiefer: mit Beispielen, Formulierungen und Übungen für mehr als 25 Alltagssituationen."}),
     h("a", {class:"btn gold", href:AMAZON, target:"amazon-buch"}, "Buch bei Amazon ansehen"))));
@@ -524,7 +572,7 @@ function renderHome(m){
 function renderLesson(m){
   const l = modById(view.id); if(!l){ go("home"); return; }
   setTitle(l.t);
-  m.append(h("button", {type:"button", class:"link back", onclick:() => go("home")}, "← Übersicht"));
+  m.append(crumb("Übersicht", () => go("home"), "Modul " + (MODULES.indexOf(l) + 1) + " von " + MODULES.length), stepper(1));
   m.append(h("div", {class:"lhead", style:"background:" + l.c},
     h("h1", {id:"h1", text:l.ico + " " + l.t}), h("p", {text:l.sub + " · ca. " + l.min + " Min."})));
   l.cards.forEach(c => m.append(h("article", {class:"kcard"}, h("h2", {text:c[0]}), h("p", {text:c[1]}))));
@@ -535,6 +583,10 @@ function renderLesson(m){
   m.append(h("div", {class:"actions"},
     h("button", {type:"button", class:"btn", onclick:() => startQuiz(l)}, "Quiz starten (" + l.q.length + " Fragen)"),
     h("a", {class:"btn gold", href:AMAZON, target:"amazon-buch"}, "Im Buch nachlesen")));
+  const mi = MODULES.indexOf(l), pv = MODULES[mi - 1], nx = MODULES[mi + 1];
+  m.append(h("nav", {class:"modnav", "aria-label":"Weitere Module"},
+    pv ? backBtn("Vorheriges Modul", () => go("lesson", {id:pv.id}), pv.t) : h("span"),
+    nx ? h("button", {type:"button", class:"btn ghost", "aria-label":"Nächstes Modul: " + nx.t, onclick:() => go("lesson", {id:nx.id})}, "Nächstes Modul →") : h("span")));
 }
 
 function startQuiz(l){
@@ -550,12 +602,12 @@ function renderGate(m){
     h("p", {class:"note", style:"margin-top:8px", text:"Dein Name bleibt auf diesem Gerät. Du kannst ihn später jederzeit ändern."}),
     h("div", {class:"row"}, h("button", {type:"submit", class:"btn"}, "Weiter zum Quiz"), h("button", {type:"button", class:"link", onclick:() => go2(true)}, "Weiter ohne Namen")));
   form.onsubmit = e => { e.preventDefault(); go2(false); };
-  m.append(h("button", {type:"button", class:"link back", onclick:() => go("lesson", {id:l.id})}, "← Zurück"), form);
+  m.append(crumb("Zurück zum Modul", () => go("lesson", {id:l.id}), "Kurz vorab"), stepper(2), form);
 }
 function renderQuiz(m){
   const l = modById(view.id), total = l.q.length, qd = l.q[view.order[view.n].i], ans = view.order[view.n].a; setTitle("Quiz: " + l.t);
   const answered = view.picked != null;
-  m.append(h("button", {type:"button", class:"link back", onclick:() => go("lesson", {id:l.id})}, "← Zum Modul"));
+  m.append(crumb("Zum Modul", () => go("lesson", {id:l.id}), "Quiz · Modul " + (MODULES.indexOf(l) + 1) + " von " + MODULES.length), stepper(2));
   m.append(h("p", {class:"qp"}, "Frage " + (view.n + 1) + " von " + total + " · " + l.t));
   m.append(h("div", {class:"bar", role:"progressbar", "aria-valuemin":"0", "aria-valuemax":String(total), "aria-valuenow":String(view.n + (answered ? 1 : 0)), "aria-label":"Fortschritt im Quiz"}, h("i", {style:"width:" + Math.round((view.n + (answered ? 1 : 0)) / total * 100) + "%"})));
   m.append(h("h1", {class:"qt", id:"h1", text:qd.q}));
@@ -586,15 +638,17 @@ function finishQuiz(l){
 function renderResult(m){
   const l = modById(view.id), total = l.q.length, pass = view.st >= 1; setTitle("Ergebnis");
   const nextL = MODULES.find(x => !earned(x));
+  m.append(stepper(3));
   m.append(h("section", {class:"panel res", "aria-labelledby":"h1"},
     h("h1", {id:"h1", text: pass ? (hasName() ? fill("Modul geschafft, {n}!") : "Modul geschafft!") : (hasName() ? fill("Noch nicht ganz, {n}.") : "Noch nicht ganz.")}),
     h("div", {class:"stars", role:"img", "aria-label":view.st + " von 3 Sternen"}, starsText(view.st)),
     h("p", {text: view.right + " von " + total + " Fragen richtig."}),
     h("p", {text: pass ? "Das war ein guter Schritt. Jede Erkenntnis zählt, und du musst nichts perfekt machen." : "Lies die Karten noch einmal in Ruhe und probiere es erneut. Ein Anfang ist besser, als stehenzubleiben."}),
     h("div", {class:"actions", style:"justify-content:center"},
-      h("button", {type:"button", class:"btn", onclick:() => startQuiz(l)}, "Quiz wiederholen"),
-      pass ? h("button", {type:"button", class:"btn ghost", onclick:() => go("certs", {id:l.id})}, "Teilnahmebestätigung") : null,
-      nextL && pass ? h("button", {type:"button", class:"btn ghost", onclick:() => go("lesson", {id:nextL.id})}, "Nächstes Modul") : null,
+      nextL && pass ? h("button", {type:"button", class:"btn", onclick:() => go("lesson", {id:nextL.id})}, "Nächstes Modul →")
+        : (pass ? h("button", {type:"button", class:"btn", onclick:() => go("certs", {id:"master"})}, "Zertifikat ansehen") : h("button", {type:"button", class:"btn", onclick:() => startQuiz(l)}, "Quiz wiederholen")),
+      pass ? h("button", {type:"button", class:"btn ghost", onclick:() => go("certs", {id:l.id})}, "Bestätigung ansehen") : h("button", {type:"button", class:"btn ghost", onclick:() => go("lesson", {id:l.id})}, "Karten nochmal lesen"),
+      pass ? h("button", {type:"button", class:"btn ghost", onclick:() => startQuiz(l)}, "Quiz wiederholen") : null,
       h("button", {type:"button", class:"btn ghost", onclick:() => go("home")}, "Übersicht"))));
   m.append(h("section", {class:"sec"}, h("div", {class:"panel"}, h("h2", {text:"Vertiefen im Buch"}), h("p", {text:"Zu diesem Modul findest du im Buch ausführliche Kapitel mit Beispielen und Übungen."}), h("a", {class:"btn gold", href:AMAZON, target:"amazon-buch"}, "Buch bei Amazon ansehen"))));
 }
@@ -633,26 +687,53 @@ function certSVG(l){
 const starsText3 = n => n >= MODULES.length * 3 ? "★★★" : n >= MODULES.length * 2 ? "★★☆" : "★☆☆";
 function latestDate(){ let d = ""; MODULES.forEach(l => { const x = (prog[l.id] || {}).date || ""; if(x > d) d = x; }); return d; }
 function renderCerts(m){
-  setTitle("Meine Bestätigungen");
   const T = totals(), allDone = T.dn === MODULES.length;
-  const sel = view.id === "master" ? null : modById(view.id) || MODULES.find(earned) || null;
-  const showMaster = view.id === "master";
-  m.append(h("button", {type:"button", class:"link back", onclick:() => go("home")}, "← Übersicht"));
+  const showMaster = view.id === "master" && allDone;
+  const sel = showMaster ? null : (modById(view.id) && earned(modById(view.id)) ? modById(view.id) : null);
+  const nextOpen = MODULES.find(x => !earned(x)), offen = MODULES.filter(x => !earned(x)).length, pct = Math.round(T.dn / MODULES.length * 100);
+  /* Detailansicht: Die Bestaetigung steht sofort oben, ohne Scrollen */
+  if(sel || showMaster){
+    const l = showMaster ? null : sel;
+    setTitle(l ? "Bestätigung: " + l.t : "Zertifikat");
+    m.append(crumb("Alle Bestätigungen", () => go("certs", {}), l ? "Modul " + (MODULES.indexOf(l) + 1) + " von " + MODULES.length : "Alle sieben Module geschafft"));
+    m.append(h("h1", {id:"h1", text:l ? "Deine Teilnahmebestätigung" : "Dein Zertifikat"}));
+    m.append(h("p", {class:"csub", text:l ? l.ico + " " + l.t : "🏆 Kinder im Alltag stärken"}));
+    const fld = h("div", {class:"field"}, h("label", {for:"cname", text:"Dein Name auf der Bestätigung"}), h("input", {id:"cname", type:"text", maxlength:"40", autocomplete:"name", value:nm, placeholder:"Dein Name"}));
+    const box = h("div", {class:"cbox printable", id:"certbox", role:"group", "aria-label":"Vorschau der Bestätigung"}); box.innerHTML = certSVG(l);
+    fld.querySelector("input").oninput = e => { nm = e.target.value; ach.skip = !nm.trim(); save(); box.innerHTML = certSVG(l); };
+    m.append(fld, box,
+      h("div", {class:"actions"}, h("button", {type:"button", class:"btn", onclick:() => downloadCert(l)}, "Als Bild speichern (PNG)"), h("button", {type:"button", class:"btn ghost", onclick:() => { document.body.classList.add("printcert"); window.print(); setTimeout(() => document.body.classList.remove("printcert"), 500); }}, "Drucken")));
+    const weitere = MODULES.filter(x => earned(x) && x !== l);
+    if(weitere.length || (allDone && l)){
+      m.append(h("h2", {text:"Weitere Bestätigungen", style:"margin-top:26px"}), h("div", {class:"cchips"},
+        weitere.map(x => h("button", {type:"button", class:"btn ghost", onclick:() => go("certs", {id:x.id})}, x.ico + " " + x.t)),
+        allDone && l ? h("button", {type:"button", class:"btn gold", onclick:() => go("certs", {id:"master"})}, "🏆 Zertifikat") : null));
+    }
+    return;
+  }
+  /* Listenansicht */
+  setTitle("Meine Bestätigungen");
+  m.append(crumb("Übersicht", () => go("home"), T.dn + " von " + MODULES.length + " Modulen geschafft"));
   m.append(h("h1", {id:"h1", text:"Meine Bestätigungen"}));
-  m.append(h("p", {text:"Für jedes geschaffte Modul gibt es eine Teilnahmebestätigung. Nach allen sieben Modulen erhältst du zusätzlich das Zertifikat."}));
+  m.append(h("p", {text:"Für jedes geschaffte Modul gibt es eine Teilnahmebestätigung. Tippe auf ein Modul: Ist es geschafft, siehst du die Bestätigung. Ist es noch offen, startest du es direkt."}));
+  m.append(h("div", {class:"csum"},
+    h("div", null, h("b", {text:T.dn + " von " + MODULES.length + " Modulen geschafft"}), h("div", {class:"bar", role:"progressbar", "aria-valuemin":"0", "aria-valuemax":String(MODULES.length), "aria-valuenow":String(T.dn), "aria-label":"Gesamtfortschritt"}, h("i", {style:"width:" + pct + "%"}))),
+    nextOpen ? h("button", {type:"button", class:"btn sm", onclick:() => go("lesson", {id:nextOpen.id})}, T.dn === 0 ? "Erstes Modul starten" : "Weiterlernen") : null));
   const list = h("div", {class:"crow", role:"group", "aria-label":"Module"});
-  MODULES.forEach(l => list.append(h("button", {type:"button", class:"cbtn", disabled:!earned(l), "aria-pressed":String(!showMaster && sel === l), onclick:() => go("certs", {id:l.id})}, h("span", {class:"ic", "aria-hidden":"true", text:l.ico}), h("span", null, h("b", {text:l.t}), h("br"), h("small", {class:"note", text:earned(l) ? "Bestätigung ansehen · " + starsText(stars(l)) : "Noch nicht geschafft"})))));
-  list.append(h("button", {type:"button", class:"cbtn", disabled:!allDone, "aria-pressed":String(showMaster), onclick:() => go("certs", {id:"master"})}, h("span", {"aria-hidden":"true", text:"🏆"}), h("span", null, h("b", {text:"Zertifikat: Kinder im Alltag stärken"}), h("br"), h("small", {class:"note", text:allDone ? "Alle sieben Module geschafft" : "Nach allen sieben Modulen"}))));
+  MODULES.forEach(l => {
+    const ok = earned(l);
+    list.append(h("button", {type:"button", class:"cbtn" + (ok ? "" : " open"), "aria-label":l.t + (ok ? ": Bestätigung ansehen" : ": noch nicht geschafft, Modul starten"), onclick:() => go(ok ? "certs" : "lesson", {id:l.id})},
+      h("span", {class:"ic", "aria-hidden":"true", text:l.ico}),
+      h("span", null, h("b", {text:l.t}), h("br"), h("small", {class:"note", text:ok ? "Bestätigung ansehen · " + starsText(stars(l)) : "Noch nicht geschafft"})),
+      h("span", {class:"cgo" + (ok ? " done" : ""), "aria-hidden":"true", text:ok ? "Ansehen" : "Starten →"})));
+  });
+  list.append(h("button", {type:"button", class:"cbtn" + (allDone ? "" : " open"), "aria-label":allDone ? "Zertifikat ansehen" : "Zertifikat: noch " + offen + " Module offen, weiterlernen", onclick:() => go(allDone ? "certs" : "lesson", allDone ? {id:"master"} : {id:nextOpen.id})},
+    h("span", {"aria-hidden":"true", text:"🏆"}),
+    h("span", null, h("b", {text:"Zertifikat: Kinder im Alltag stärken"}), h("br"), h("small", {class:"note", text:allDone ? "Alle sieben Module geschafft" : "Noch " + offen + " von " + MODULES.length + " Modulen offen"})),
+    h("span", {class:"cgo" + (allDone ? " done" : ""), "aria-hidden":"true", text:allDone ? "Ansehen" : "Weiter →"})));
   m.append(list);
-  if(!sel && !showMaster){ m.append(h("p", {class:"note", style:"margin-top:16px", text:"Schließe ein Modul mit mindestens der Hälfte richtiger Antworten ab, um deine erste Bestätigung zu erhalten."})); return; }
-  const l = showMaster ? null : sel;
-  const fld = h("div", {class:"field"}, h("label", {for:"cname", text:"Dein Name auf der Bestätigung"}), h("input", {id:"cname", type:"text", maxlength:"40", autocomplete:"name", value:nm, placeholder:"Dein Name"}));
-  const box = h("div", {class:"cbox printable", id:"certbox", role:"group", "aria-label":"Vorschau der Bestätigung"}); box.innerHTML = certSVG(l);
-  fld.querySelector("input").oninput = e => { nm = e.target.value; ach.skip = !nm.trim(); save(); box.innerHTML = certSVG(l); };
-  m.append(fld, box,
-    h("div", {class:"actions"}, h("button", {type:"button", class:"btn", onclick:() => downloadCert(l)}, "Als Bild speichern (PNG)"), h("button", {type:"button", class:"btn ghost", onclick:() => { document.body.classList.add("printcert"); window.print(); setTimeout(() => document.body.classList.remove("printcert"), 500); }}, "Drucken")));
-}
-function downloadCert(l){
+  if(T.dn === 0) m.append(h("div", {class:"cempty"}, h("p", {text:"Noch keine Bestätigung. Schließe ein Modul mit mindestens der Hälfte richtiger Antworten ab, dann erscheint sie hier."}), h("button", {type:"button", class:"btn", onclick:() => go("lesson", {id:MODULES[0].id})}, "Erstes Modul starten")));
+}function downloadCert(l){
   const svg = certSVG(l), blob = new Blob([svg], {type:"image/svg+xml;charset=utf-8"}), url = URL.createObjectURL(blob), img = new Image();
   img.onload = () => { const c = document.createElement("canvas"); c.width = 2246; c.height = 1588; const x = c.getContext("2d"); x.fillStyle = "#fffdf8"; x.fillRect(0, 0, c.width, c.height); x.drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(url);
     c.toBlob(b => { const a = document.createElement("a"); a.href = URL.createObjectURL(b); a.download = "teilnahmebestaetigung-" + (l ? l.id : "zertifikat") + ".png"; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000); }, "image/png"); };
@@ -718,7 +799,8 @@ render(false);
   const android = /android/i.test(navigator.userAgent);
   const MENU = "Öffne das Browser-Menü (⋮) und wähle „App installieren“ oder „Zum Startbildschirm hinzufügen“.";
   const setText = s => { tt.innerHTML = "<b>Als App installieren</b><br>"; tt.append(s); };
-  const hinweis = s => { setText(s); btn.hidden = true; how.hidden = true; x.textContent = "Schließen"; card.classList.add("show"); };
+  let hinTimer = 0;
+  const hinweis = s => { setText(s); btn.hidden = true; how.hidden = true; x.textContent = "Schließen"; card.classList.add("show"); clearTimeout(hinTimer); hinTimer = setTimeout(() => card.classList.remove("show"), 15000); };   // reiner Hinweis: blendet sich nach 15 Sekunden selbst aus, damit er den Inhalt nicht dauerhaft verdeckt
   const iosDialog = () => {
     document.querySelectorAll(".shdlg").forEach(d => d.remove());
     const d = h("dialog", {class:"shdlg", "aria-labelledby":"iht"}, h("button", {type:"button", class:"shx", "aria-label":"Schließen", onclick:() => d.close()}, "✕"),
@@ -739,6 +821,51 @@ render(false);
   how.addEventListener("click", iosDialog);
   x.addEventListener("click", () => { card.classList.remove("show"); try{ sessionStorage.setItem("wmiw_inst_x", "1"); }catch(e){} });
   window.addEventListener("appinstalled", () => { fertig = true; card.classList.remove("show"); });
+})();
+
+/* Diagnose: nur sichtbar mit ?diag=1 hinter der Adresse. Zeigt, warum der Browser die Installation anbietet oder nicht. */
+(function () {
+  if (!/[?&]diag\b/.test(location.search)) return;
+  var box = document.createElement("pre");
+  box.style.cssText = "white-space:pre-wrap;word-break:break-word;font:12px/1.5 ui-monospace,Consolas,monospace;background:#111;color:#9f9;padding:12px;margin:10px;border-radius:12px;position:relative;z-index:200";
+  document.body.insertBefore(box, document.body.firstChild);
+  var t0 = Date.now(), bip = "NEIN (bisher nicht eingetroffen)", man = null, icons = [], swv = "?";
+  window.addEventListener("beforeinstallprompt", function () { bip = "JA, nach " + Math.round((Date.now() - t0) / 1000) + " s"; });
+  window.addEventListener("appinstalled", function () { bip += " | appinstalled erhalten"; });
+  (async function () {
+    try {
+      var l = document.querySelector('link[rel="manifest"]'); var r = await fetch(l.href, { cache: "reload" }); man = await r.json(); man._status = r.status;
+      for (var i = 0; i < (man.icons || []).length; i++) {
+        var ic = man.icons[i], im = new Image();
+        var pr = new Promise(function (ok, no) { im.onload = ok; im.onerror = no; setTimeout(no, 5000); });
+        im.src = new URL(ic.src, l.href).href;
+        try { await pr; icons.push(ic.src + " " + im.naturalWidth + "x" + im.naturalHeight + " (" + ic.purpose + ")"); } catch (e) { icons.push(ic.src + " FEHLT/NICHT LESBAR"); }
+      }
+    } catch (e) { man = { _fehler: String(e) }; }
+    try { var s = await (await fetch("sw.js", { cache: "reload" })).text(); swv = (s.match(/VERSION = "([^"]+)"/) || [0, "?"])[1]; } catch (e) {}
+  })();
+  async function show() {
+    var reg = "serviceWorker" in navigator ? await navigator.serviceWorker.getRegistration() : null;
+    var host = location.origin === "https://www.mutige-kinderherzen.de" ? "ok (https://www.mutige-kinderherzen.de)" : (/localhost|127\.0\.0\.1/.test(location.hostname) ? "lokaler Test" : "ABWEICHEND: " + location.origin + " (richtig wäre https://www.mutige-kinderherzen.de)");
+    var karte = document.querySelector("#install.show,#pwa-inst.show");
+    var L = [
+      "Diagnose, Dateiversion laut sw.js: " + swv,
+      "Adresse: " + location.href,
+      "Ursprung: " + host,
+      "Sicherer Kontext (HTTPS): " + (window.isSecureContext ? "ja" : "NEIN"),
+      "Als App geöffnet (standalone): " + ((matchMedia("(display-mode: standalone)").matches || navigator.standalone) ? "JA" : "nein"),
+      "Service Worker: " + (reg ? "registriert, Bereich " + reg.scope + ", Status " + (reg.active ? reg.active.state : "nicht aktiv") : "NICHT registriert") + " | steuert Seite: " + (navigator.serviceWorker && navigator.serviceWorker.controller ? "ja (" + navigator.serviceWorker.controller.scriptURL + ")" : "nein"),
+      "Manifest: " + (man ? (man._fehler ? "FEHLER " + man._fehler : "HTTP " + man._status + ", id=" + man.id + ", start_url=" + man.start_url + ", scope=" + man.scope + ", display=" + man.display) : "wird geladen ..."),
+      "Icons: " + (icons.length ? icons.join(" | ") : "..."),
+      "Installationsangebot des Browsers (beforeinstallprompt): " + bip,
+      "Installieren-Karte in der Seite: " + (karte ? "sichtbar" : "nicht sichtbar"),
+      "Browser: " + navigator.userAgent,
+      "",
+      "Bleibt beforeinstallprompt auf NEIN (mindestens 10 s warten), hält der Browser die App für bereits installiert oder nicht installierbar. Dann im Browser-Menü (3 Punkte) nachsehen, ob 'App installieren' oder 'App öffnen' steht. Hinweis: Webseite und App liegen im selben Ursprung; die Webseite (Bereich /) umschließt die App (Bereich /was-mache-ich-wenn-app/)."
+    ];
+    box.textContent = L.join("\n");
+  }
+  show(); setInterval(show, 1500);
 })();
 </script>
 </body>

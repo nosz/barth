@@ -4,7 +4,7 @@
 
 # NATBARTH: Webseite und App für Nathalie Barth
 
-Moderne, motivierende Webseite für Nathalie Barth (Selbstbehauptungs- und Resilienztraining für Kinder, „Mutige Kinderherzen“) mit Kursen und Terminen direkt unter dem Einstieg, starkem Fokus auf den Ratgeber **„Was mache ich, wenn…?“** und der Lern-App **WAS MACHE ICH WENN APP**. Alles ist statisch (HTML, CSS, JS), läuft ohne Server-Code und ist als PWA installierbar. Stand: Version 1.0.26, 15.10.2026.
+Moderne, motivierende Webseite für Nathalie Barth (Selbstbehauptungs- und Resilienztraining für Kinder, „Mutige Kinderherzen“) mit Kursen und Terminen direkt unter dem Einstieg, starkem Fokus auf den Ratgeber **„Was mache ich, wenn…?“** und der Lern-App **WAS MACHE ICH WENN APP**. Alles ist statisch (HTML, CSS, JS), läuft ohne Server-Code und ist als PWA installierbar. Stand: Version 1.0.27, 15.10.2026.
 
 > **Veröffentlichung:** Die Seite ersetzt die alte Webseite unter `https://www.mutige-kinderherzen.de/` (Hosting bei IONOS, Frankfurt; per DNS, IP-Zuordnung, MX und SPF geprüft). Die absoluten Adressen für Link-Vorschau (`og:image`, `canonical`, JSON-LD) in `index.html` und `was-mache-ich-wenn-app/app.html` zeigen auf diese Domain. Eine Testadresse bei GitHub Pages dient **nur zum Testen** und darf nirgends in der Seite stehen; maßgeblich ist immer `https://www.mutige-kinderherzen.de/` (Link-Vorschau-Bilder erscheinen in Messengern erst dort). Alle anderen Verweise sind relativ. Dateinamen der alten Seite (`index.html`, `impressum.html`) bleiben gleich, die alten Anker (`#article04-1a` Kurse, `#list01-3` Fragen, `#form02-s` Anfrage) führen weiter an die passenden Stellen.
 
@@ -57,7 +57,7 @@ Lern-App nach dem Buch, seriös gestaltet: 7 Module (Gefühle, Wut und Traurigke
 * **Fenster:** Alle Amazon-Links öffnen in einem neuen Tab mit dem festen Namen `amazon-buch`, alle Links zur App in einem Tab mit dem Namen `wmiw-app`. Ein erneuter Klick lädt dasselbe Fenster neu, statt jedes Mal ein weiteres zu öffnen. Dafür darf an diesen Links **kein** `rel="noopener"` oder `noreferrer` stehen (beides verhindert die Wiederverwendung). Alle anderen Links öffnen im gleichen Tab.
 * **Ziele:** Amazon `https://www.amazon.de/Was-mache-ich-wenn-Situationen/dp/B0FKZ4T17T` (Titel der Zielseite geprüft), WhatsApp-Kanal, Instagram, `wa.me/491603148838`; eine Mail-Adresse und die Telefonnummern aus `quellen/link_vorgaben.json`.
 * **Prüfung vor jeder Lieferung:** `links_pruefen_projekt.ps1` (Skill-Ordner `assets`) mit `quellen/link_vorgaben.json` und `-EigeneBasis https://www.mutige-kinderherzen.de/`, Ergebnis in `quellen/linktest_NATBARTH.md`; dazu der Browser-Test `testsuite_klickziele.js` (trifft ein Klick wirklich den jeweiligen Link, mehrere Breiten).
-## Tests (15.10.2026, Version 1.0.26)
+## Tests (15.10.2026, Version 1.0.27)
 
 * UX-Suite U1 bis U10 (320, 360, 390 px, Querformat) für Startseite, Impressum, Datenschutz und App, jeweils hell und dunkel: alle bestanden.
 * App-Ansichten (Überlauf, Schriftgröße, Kontrast, Tippziele, Ränder) für Start, Modul, Quiz, Ergebnis, Bestätigungen und Namensabfrage, hell und dunkel; alle 7 Module durchgespielt (Sterne, Persistenz, schlechtere Folgerunde ändert den besten Stand nicht), 40 Urkundenvarianten mit langen Namen und Sonderzeichen.
@@ -78,6 +78,7 @@ Lern-App nach dem Buch, seriös gestaltet: 7 Module (Gefühle, Wut und Traurigke
 
 ## Änderungsprotokoll
 
+- 1.0.27 (15.10.2026): Neu: Teilen-Symbol in der Kopfzeile (Webseite und App; Teilen-Menü des Geräts, sonst Fenster mit WhatsApp, E-Mail, Link kopieren; geteilt wird immer die Adresse der Produktiv-Domain; neue Datei `teilen.js`). Klick auf Logo/Name oben links bringt auf der Startseite sanft nach oben. App 1.0.5: „Name ändern“ / „Name eintragen“ ist ein Button unter den drei Kacheln, „Lieber anonym bleiben“ ist ein Button. Kopfzeile auf schmalen Handys angepasst; auf Impressum und Datenschutz entfällt unter 560 px der Knopf „Zur Startseite“ (das Logo führt dorthin).
 - 1.0.26 (15.10.2026): Amazon- und App-Links merken das Zielfenster zusätzlich im Skript (`fenster.js`, in der App inline); der zweite Klick nutzt dasselbe Fenster, auch wenn die Zielseite den Fensternamen zurücksetzt.
 - 1.0.25 (15.10.2026): Feste untere Leiste auf dem Handy („Kurse und Termine“, „Buch bestellen“) entfernt; App-Links in Impressum und Datenschutz mit benanntem Fenster; in der App stehen wieder die Adressen der Produktiv-Domain.
 - 1.0.23 und 1.0.24 (15.10.2026): Amazon- und App-Links öffnen in benannten Tabs (`amazon-buch`, `wmiw-app`), die bei jedem Klick wiederverwendet werden.

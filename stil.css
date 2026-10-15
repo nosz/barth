@@ -371,3 +371,21 @@ footer a{display:inline-flex;align-items:center;min-height:44px;color:var(--link
 
 /* Alte Ankernamen der bisherigen Webseite (index.html#article04-1a usw.) */
 .anchor-alias{display:block;height:0;overflow:hidden;scroll-margin-top:90px}
+
+/* Teilen-Symbol und Teilen-Fenster (teilen.js) */
+.menu{order:1}.sharebtn{order:2}.navcta{order:3}.burger{order:4}
+.sharebtn{display:inline-flex;align-items:center;justify-content:center;flex:none;min-width:48px;min-height:48px;border:0;background:var(--soft);color:var(--ink);border-radius:12px;cursor:pointer;transition:background .15s}
+.sharebtn:hover{background:var(--line)}
+.shdlg{border:0;border-radius:22px;padding:22px 22px 20px;background:var(--card);color:var(--ink);box-shadow:0 18px 50px rgba(20,16,70,.4);width:min(92vw,440px);max-width:none}
+.shdlg::backdrop{background:rgba(20,16,70,.55)}
+.shdlg .shx{float:right;min-width:44px;min-height:44px;border-radius:50%;border:2px solid var(--line);background:var(--card);color:var(--ink);font-size:1.05rem;cursor:pointer}
+.shdlg .shh{margin:0 0 4px}.shdlg .shh b{display:block;font-size:1.25rem;margin-bottom:4px}.shdlg .shh span{color:var(--mute)}
+.shrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.shopt{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;border:2px solid var(--indigo);background:var(--card);color:var(--link);font:700 1rem/1.2 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-decoration:none;cursor:pointer}
+.shopt:hover{background:var(--indigo);color:#fff}
+.sharesnack{position:fixed;left:12px;right:12px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:120;max-width:520px;margin:0 auto;background:#27226a;color:#fff;border-radius:14px;padding:13px 16px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.35);text-align:center}
+@media (max-width:860px){.sharebtn{order:1}.burger{order:2}.menu{order:3}}
+@media (max-width:860px){.sharebtn,.burger{min-width:44px;min-height:44px}.nav{padding:8px 10px;gap:6px}.brand{min-width:0;flex:1 1 0;gap:10px}.brand>span{min-width:0}.brand b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+@media (max-width:350px){.brand img{width:38px;height:38px}.brand b{font-size:.84rem}.nav{padding:8px 8px}}
+@media (max-width:560px){.nav>a.btn.ind{display:none}}
+@media print{.sharebtn,.shdlg,.sharesnack{display:none!important}}

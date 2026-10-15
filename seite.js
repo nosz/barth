@@ -106,11 +106,36 @@ document.querySelectorAll("a[data-angebot]").forEach(a => { a.href = mailLink(a.
       let neu = false; navigator.serviceWorker.addEventListener("controllerchange", () => { if (neu) return; neu = true; location.reload(); });
     });
   }
-  const card = $("#install"), btn = $("#install-btn"), ios = $("#install-ios"); if (!card) return;
-  let ev = null;
+  const card = $("#install"), btn = $("#install-btn"), how = $("#install-how"), sub = $("#install-sub"); if (!card) return;
+  let ev = null, fertig = false;
   const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
-  window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); ev = e; if (!standalone) { card.classList.add("show"); btn.hidden = false; ios.hidden = true; } });
-  if (!standalone && /iphone|ipad|ipod/i.test(navigator.userAgent)) { card.classList.add("show"); btn.hidden = true; ios.hidden = false; }
-  btn.addEventListener("click", async () => { if (!ev) return; ev.prompt(); await ev.userChoice.catch(() => {}); ev = null; card.classList.remove("show"); });
-  window.addEventListener("appinstalled", () => card.classList.remove("show"));
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const android = /android/i.test(navigator.userAgent);
+  const ORIG = sub.textContent;
+  const MENU = "Öffne das Browser-Menü (⋮) und wähle „App installieren“ oder „Zum Startbildschirm hinzufügen“.";
+  const hinweis = txt => { sub.textContent = txt; btn.hidden = true; how.hidden = true; card.classList.add("show"); };
+  const iosDialog = () => {
+    const alt = $(".shdlg"); if (alt) alt.remove();
+    const d = document.createElement("dialog"); d.className = "shdlg"; d.setAttribute("aria-labelledby", "iht");
+    d.innerHTML = '<button type="button" class="shx" aria-label="Schließen">✕</button>' +
+      '<p class="shh"><b id="iht">App auf dem iPhone installieren</b></p>' +
+      '<ol class="instol"><li>Tippe in Safari auf das Teilen-Symbol des Browsers (Quadrat mit Pfeil nach oben, in der unteren oder oberen Leiste).</li>' +
+      '<li>Scrolle im Menü und wähle „Zum Home-Bildschirm“.</li>' +
+      '<li>Tippe oben rechts auf „Hinzufügen“. Danach startet die Seite wie eine App.</li></ol>' +
+      '<p class="shh"><small>Hinweis: Gemeint ist das Teilen-Symbol von Safari, nicht das Symbol oben auf dieser Seite.</small></p>';
+    d.querySelector(".shx").addEventListener("click", () => d.close());
+    d.addEventListener("click", e => { if (e.target === d) d.close(); });
+    d.addEventListener("close", () => d.remove());
+    document.body.appendChild(d); d.showModal();
+  };
+  window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); ev = e; if (!standalone && !fertig) { sub.textContent = ORIG; btn.hidden = false; how.hidden = true; card.classList.add("show"); } });
+  if (!standalone && ios) { sub.textContent = "Auf dem iPhone geht das über das Teilen-Menü von Safari."; btn.hidden = true; how.hidden = false; card.classList.add("show"); }
+  window.addEventListener("load", () => setTimeout(() => { if (!ev && android && !standalone && !fertig) hinweis(MENU); }, 4000));
+  btn.addEventListener("click", async () => {
+    if (!ev) return; const e = ev; ev = null; let res = null;
+    try { await e.prompt(); res = await e.userChoice; } catch (x) {}
+    if (res && res.outcome === "accepted") { fertig = true; card.classList.remove("show"); } else hinweis("Installation abgebrochen? " + MENU);
+  });
+  how.addEventListener("click", iosDialog);
+  window.addEventListener("appinstalled", () => { fertig = true; card.classList.remove("show"); });
 })();

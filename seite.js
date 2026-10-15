@@ -52,8 +52,6 @@ document.querySelectorAll("a[data-angebot]").forEach(a => { a.href = mailLink(a.
     const n = nachricht(aktuell, werte()), text = box.value;
     $("#anf-mail").href = mailLink(aktuell, null, text);
     $("#anf-wa").href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(text);
-    $("#anf-gmail").href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(MAIL) + "&su=" + encodeURIComponent(n.betreff) + "&body=" + encodeURIComponent(text);
-    $("#anf-outlook").href = "https://outlook.live.com/mail/0/deeplink/compose?to=" + encodeURIComponent(MAIL) + "&subject=" + encodeURIComponent(n.betreff) + "&body=" + encodeURIComponent(text);
   };
   const aktualisiere = () => { if (!textGeaendert) box.value = nachricht(aktuell, werte()).text; links(); };
   const oeffne = (a, quelle) => {
@@ -75,10 +73,8 @@ document.querySelectorAll("a[data-angebot]").forEach(a => { a.href = mailLink(a.
   $("#anf-close").addEventListener("click", () => dlg.close());
   dlg.addEventListener("click", ev => { if (ev.target === dlg) dlg.close(); });
   dlg.addEventListener("close", () => { if (ausloeser && ausloeser.focus) ausloeser.focus(); });
-  $("#anf-mail").addEventListener("click", () => zeigeStatus("Dein E-Mail-Programm sollte sich jetzt öffnen. Öffnet sich nichts, nutze „Text und Adresse kopieren“ oder Gmail beziehungsweise Outlook.", true));
+  $("#anf-mail").addEventListener("click", () => zeigeStatus("Dein E-Mail-Programm sollte sich jetzt öffnen. Öffnet sich nichts, nutze „Text und Adresse kopieren“ oder schreibe per WhatsApp.", true));
   $("#anf-wa").addEventListener("click", () => zeigeStatus("WhatsApp wird geöffnet. Die Nachricht ist schon eingetragen, du musst nur noch auf Senden tippen.", true));
-  $("#anf-gmail").addEventListener("click", () => zeigeStatus("Gmail wird geöffnet …", true));
-  $("#anf-outlook").addEventListener("click", () => zeigeStatus("Outlook wird geöffnet …", true));
   $("#anf-copy").addEventListener("click", async () => {
     const n = nachricht(aktuell, werte()), kopie = "An: " + MAIL + "\nBetreff: " + n.betreff + "\n\n" + box.value;
     let ok = false;

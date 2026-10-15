@@ -4,9 +4,9 @@
 
 # NATBARTH: Webseite und App für Nathalie Barth
 
-Moderne, motivierende Webseite für Nathalie Barth (Selbstbehauptungs- und Resilienztraining für Kinder, „Mutige Kinderherzen“) mit Kursen und Terminen direkt unter dem Einstieg, starkem Fokus auf den Ratgeber **„Was mache ich, wenn…?“** und der Lern-App **WAS MACHE ICH WENN APP**. Alles ist statisch (HTML, CSS, JS), läuft ohne Server-Code und ist als PWA installierbar. Stand: Version 1.0.20, 15.10.2026.
+Moderne, motivierende Webseite für Nathalie Barth (Selbstbehauptungs- und Resilienztraining für Kinder, „Mutige Kinderherzen“) mit Kursen und Terminen direkt unter dem Einstieg, starkem Fokus auf den Ratgeber **„Was mache ich, wenn…?“** und der Lern-App **WAS MACHE ICH WENN APP**. Alles ist statisch (HTML, CSS, JS), läuft ohne Server-Code und ist als PWA installierbar. Stand: Version 1.0.26, 15.10.2026.
 
-> **Veröffentlichung:** Die Seite ersetzt die alte Webseite unter `https://www.mutige-kinderherzen.de/` (Hosting bei IONOS, Frankfurt; per DNS, IP-Zuordnung, MX und SPF geprüft). Die absoluten Adressen für Link-Vorschau (`og:image`, `canonical`, JSON-LD) in `index.html` und `was-mache-ich-wenn-app/app.html` zeigen auf diese Domain. Die GitHub-Pages-Adresse (`nosz.github.io/natbarth`) dient nur zum Testen; dort stimmen die Vorschau-Bilder in Messengern nicht, weil sie auf die Produktiv-Domain verweisen. Alle anderen Verweise sind relativ. Dateinamen der alten Seite (`index.html`, `impressum.html`) bleiben gleich, die alten Anker (`#article04-1a` Kurse, `#list01-3` Fragen, `#form02-s` Anfrage) führen weiter an die passenden Stellen.
+> **Veröffentlichung:** Die Seite ersetzt die alte Webseite unter `https://www.mutige-kinderherzen.de/` (Hosting bei IONOS, Frankfurt; per DNS, IP-Zuordnung, MX und SPF geprüft). Die absoluten Adressen für Link-Vorschau (`og:image`, `canonical`, JSON-LD) in `index.html` und `was-mache-ich-wenn-app/app.html` zeigen auf diese Domain. Eine Testadresse bei GitHub Pages dient **nur zum Testen** und darf nirgends in der Seite stehen; maßgeblich ist immer `https://www.mutige-kinderherzen.de/` (Link-Vorschau-Bilder erscheinen in Messengern erst dort). Alle anderen Verweise sind relativ. Dateinamen der alten Seite (`index.html`, `impressum.html`) bleiben gleich, die alten Anker (`#article04-1a` Kurse, `#list01-3` Fragen, `#form02-s` Anfrage) führen weiter an die passenden Stellen.
 
 ## Inhalt
 
@@ -38,27 +38,32 @@ Direkt unter dem Hero (Abschnitt `#kurse`), Quelle: `quellen/info_webseite_quell
 * **Fortlaufender Kurs**, jederzeit einsteigen: montags 16 bis 17 Uhr, € 49,– pro Monat ab September 2026, kleine Gruppe, aktuell noch 3 freie Plätze.
 * **Kitas** (5 bis 7 Jahre, max. 12 Kinder, z. B. 4 × 60 Minuten) und **Grundschulen** (Klasse 1 bis 4, z. B. 3 × 90 Minuten in einer Klasse).
 * „So meldest du dein Kind an“ in 3 Schritten, sechs Fragen zur Anmeldung, „Das lernen Kinder“, „Für Eltern“, „Für Schulen und Kitas“, Konzept „Stark auch ohne Muckis“, Aus- und Weiterbildungen, Kontaktdaten und Instagram.
-* **Anfrage-Dialog:** Jeder Kurs und jedes Angebot hat einen Button, der ein Fenster öffnet: Der Besucher trägt Angaben ein, die Nachricht (mit Datum und Ort, Bitte um Teilnahmebedingungen und Zahlungsmodalitäten) baut sich live auf und lässt sich anpassen. Gesendet wird per E-Mail-Programm, WhatsApp (0160 3148838), Gmail, Outlook (Web), kopiert oder per Anruf. Es werden keine Daten an Dritte übermittelt; ohne Dialog-Unterstützung des Browsers bleibt der normale E-Mail-Link. Adresse, Anrede, WhatsApp-Nummer und Texte stehen oben in `seite.js` (`MAIL`, `ANREDE`, `WHATSAPP`, `ANGEBOTE`). Die einzige E-Mail-Adresse auf der Seite (Kontakt, Anfragen, Impressum, Datenschutz) ist `nathalie.barth@mutige-kinderherzen.de`.
-* Ist der Termin des Wochenendkurses vorbei (`data-kurs-datum` und `data-kurs-ende` in `index.html`), wechselt die Karte automatisch auf „Termin ist vorbei“ und „Nächsten Termin anfragen“. Auf dem Handy führt eine feste Leiste zu „Kurse und Termine“.
+* **Anfrage-Dialog:** Jeder Kurs und jedes Angebot hat einen Button, der ein Fenster öffnet: Der Besucher trägt Angaben ein, die Nachricht (mit Datum und Ort, Bitte um Teilnahmebedingungen und Zahlungsmodalitäten) baut sich live auf und lässt sich anpassen. Gesendet wird per E-Mail-Programm, WhatsApp (0160 3148838), durch Kopieren des Textes oder per Anruf. Es werden keine Daten an Dritte übermittelt; ohne Dialog-Unterstützung des Browsers bleibt der normale E-Mail-Link. Adresse, Anrede, WhatsApp-Nummer und Texte stehen oben in `seite.js` (`MAIL`, `ANREDE`, `WHATSAPP`, `ANGEBOTE`). Die einzige E-Mail-Adresse auf der Seite (Kontakt, Anfragen, Impressum, Datenschutz) ist `nathalie.barth@mutige-kinderherzen.de`.
+* Ist der Termin des Wochenendkurses vorbei (`data-kurs-datum` und `data-kurs-ende` in `index.html`), wechselt die Karte automatisch auf „Termin ist vorbei“ und „Nächsten Termin anfragen“.
 * **Pflege:** Termine, Preise und freie Plätze stehen direkt im HTML (`#kurse`). Nach jeder Änderung die Version in `sw.js` erhöhen, damit Besucher den Update-Hinweis bekommen.
 * **Elternstimmen** („Das sagen Eltern“, 3 Rückmeldungen mit Vorname und Initial wie auf der alten Webseite) und der persönliche Abschluss „Ich freue mich, dich und dein Kind kennenzulernen“ mit Anfrage-Button. An den Zitaten geändert: Tippfehler und Leerzeichen korrigiert („Selbsbewusstsein“, „Nathalie's“), „Löwen/innen“ zu „Löwen und Löwinnen“, und der Vorname des Kindes („Mila“) entfernt (Datenschutz für das Kind), dafür „Sie“.
 * Bewusst nicht übernommen: unbelegte Statistik zu Mobbing („Die Fakten“) und die „7 Tipps“.
 
 ## Buch bestellen
 
-Amazon-Link in der Navigation, im Hero, in der Buch-Sektion, als feste Leiste am unteren Rand auf dem Handy und im Abschluss-Block. Dazu: konkrete Nutzenversprechen, Sätze aus dem Buch und FAQ. Es gibt keine erfundenen Bewertungen, Preise oder Verknappungs-Tricks.
+Amazon-Link in der Navigation, im Hero, in der Buch-Sektion, und im Abschluss-Block. Dazu: konkrete Nutzenversprechen, Sätze aus dem Buch und FAQ. Es gibt keine erfundenen Bewertungen, Preise oder Verknappungs-Tricks.
 
 ## WAS MACHE ICH WENN APP
 
 Lern-App nach dem Buch, seriös gestaltet: 7 Module (Gefühle, Wut und Traurigkeit, Schüchtern/Angst/Scham, Streit, Alltag, Schule und Veränderungen, Abschlussrunde), je mit Karten, Merksatz, Vertiefung, Kapitelverweis und 4 bis 6 Quizfragen. Dazu Merksatz des Tages, Sterne und Stand, Namens-Personalisierung (nachträglich änderbar), Teilnahmebestätigung pro Modul und Zertifikat nach allen sieben Modulen (PNG-Download und Druck), Hinweis „Hilfe finden“ mit Anlaufstellen, Offline-Betrieb, Update-Hinweis. Der Fortschritt bleibt nur im Browser des Geräts (`localStorage`).
 
-## Tests (15.10.2026, Version 1.0.20)
+## Link-Regeln (Pflicht, geprüft)
+
+* **Fenster:** Alle Amazon-Links öffnen in einem neuen Tab mit dem festen Namen `amazon-buch`, alle Links zur App in einem Tab mit dem Namen `wmiw-app`. Ein erneuter Klick lädt dasselbe Fenster neu, statt jedes Mal ein weiteres zu öffnen. Dafür darf an diesen Links **kein** `rel="noopener"` oder `noreferrer` stehen (beides verhindert die Wiederverwendung). Alle anderen Links öffnen im gleichen Tab.
+* **Ziele:** Amazon `https://www.amazon.de/Was-mache-ich-wenn-Situationen/dp/B0FKZ4T17T` (Titel der Zielseite geprüft), WhatsApp-Kanal, Instagram, `wa.me/491603148838`; eine Mail-Adresse und die Telefonnummern aus `quellen/link_vorgaben.json`.
+* **Prüfung vor jeder Lieferung:** `links_pruefen_projekt.ps1` (Skill-Ordner `assets`) mit `quellen/link_vorgaben.json` und `-EigeneBasis https://www.mutige-kinderherzen.de/`, Ergebnis in `quellen/linktest_NATBARTH.md`; dazu der Browser-Test `testsuite_klickziele.js` (trifft ein Klick wirklich den jeweiligen Link, mehrere Breiten).
+## Tests (15.10.2026, Version 1.0.26)
 
 * UX-Suite U1 bis U10 (320, 360, 390 px, Querformat) für Startseite, Impressum, Datenschutz und App, jeweils hell und dunkel: alle bestanden.
 * App-Ansichten (Überlauf, Schriftgröße, Kontrast, Tippziele, Ränder) für Start, Modul, Quiz, Ergebnis, Bestätigungen und Namensabfrage, hell und dunkel; alle 7 Module durchgespielt (Sterne, Persistenz, schlechtere Folgerunde ändert den besten Stand nicht), 40 Urkundenvarianten mit langen Namen und Sonderzeichen.
-* Anfrage-Dialog: alle 8 Anfrage-Buttons, Live-Nachricht, Links für E-Mail-Programm, WhatsApp, Gmail, Outlook (Web) und Anruf, Kopieren (mit echtem Klick geprüft), Schließen per Button und Hintergrund, Fokus zurück; Layout bei 320, 375, 420 und 800 px, hell und dunkel.
+* Anfrage-Dialog: alle 8 Anfrage-Buttons, Live-Nachricht, Links für E-Mail-Programm, WhatsApp und Anruf, Kopieren (mit echtem Klick geprüft), Schließen per Button und Hintergrund, Fokus zurück; Layout bei 320, 375, 420 und 800 px, hell und dunkel.
 * 73 interne Verweise per HTTP, alle Anker und Bilder vorhanden; alle Amazon-, WhatsApp-, Instagram- und Mail-Links geprüft; 7 Anfrage-Mails mit vollständigem Text; kein Link öffnet einen neuen Tab.
-* Externe Ziele (HTTP 200): Amazon-Buchseite, WhatsApp-Kanal, Instagram, EU-Streitschlichtung, e-recht24, IONOS.
+* Externe Ziele (HTTP 200): Amazon-Buchseite, WhatsApp-Kanal, wa.me, Instagram, EU-Streitschlichtung, e-recht24, IONOS.
 * PWA: beide Service Worker, Caches, Manifeste, Icons; Webseite und App laden mit gestopptem Server offline, Name und Fortschritt bleiben erhalten.
 
 ## Offene Punkte vor der Veröffentlichung
@@ -73,9 +78,14 @@ Lern-App nach dem Buch, seriös gestaltet: 7 Module (Gefühle, Wut und Traurigke
 
 ## Änderungsprotokoll
 
+- 1.0.26 (15.10.2026): Amazon- und App-Links merken das Zielfenster zusätzlich im Skript (`fenster.js`, in der App inline); der zweite Klick nutzt dasselbe Fenster, auch wenn die Zielseite den Fensternamen zurücksetzt.
+- 1.0.25 (15.10.2026): Feste untere Leiste auf dem Handy („Kurse und Termine“, „Buch bestellen“) entfernt; App-Links in Impressum und Datenschutz mit benanntem Fenster; in der App stehen wieder die Adressen der Produktiv-Domain.
+- 1.0.23 und 1.0.24 (15.10.2026): Amazon- und App-Links öffnen in benannten Tabs (`amazon-buch`, `wmiw-app`), die bei jedem Klick wiederverwendet werden.
+- 1.0.22 (15.10.2026): Anfrage-Dialog: Buttons „In Gmail öffnen“ und „In Outlook (Web) öffnen“ entfernt.
+- 1.0.21 (15.10.2026): **Fehler behoben:** Ein unsichtbarer Klickbereich des Buttons „Jetzt anfragen“ lag über dem oberen Seitenbereich und fing die Klicks auf die Hero-Buttons ab (Amazon und App). Klickbereich der Karten jetzt nur noch bei den Angebots-Karten. Neuer Pflichttest „Klickziele“ (jeder Link, mehrere Breiten). Hero-Texte gekürzt. Keine `#`-Platzhalter-Links mehr.
 - 1.0.20 (15.10.2026): Texte im Anfrage-Dialog und bei den Elternstimmen auf Ich-Form angeglichen; README bereinigt.
 - 1.0.19 (15.10.2026): Produktiv-Adresse `https://www.mutige-kinderherzen.de/` in allen Vorschau-Tags; alte Ankernamen der bisherigen Seite bleiben gültig.
-- 1.0.17 und 1.0.18 (15.10.2026): Anfrage-Dialog: Angaben eintragen, Nachricht live sehen, senden per E-Mail-Programm, WhatsApp (0160 3148838), Gmail, Outlook (Web), Text kopieren oder anrufen; ohne Datenübermittlung an Dritte.
+- 1.0.17 und 1.0.18 (15.10.2026): Anfrage-Dialog: Angaben eintragen, Nachricht live sehen, senden per E-Mail-Programm, WhatsApp (0160 3148838), Text kopieren oder anrufen; ohne Datenübermittlung an Dritte.
 - 1.0.16 (15.10.2026): „Das sagen Eltern“ (3 Rückmeldungen), persönlicher Abschluss mit Anfrage-Button, „Über mich“ mit Nathalies Worten (Vision, „Heldenkraft“) statt der Buchtexte.
 - 1.0.15 (15.10.2026): E-Mail-Adresse überall `nathalie.barth@mutige-kinderherzen.de` (auch Impressum und Datenschutz).
 - 1.0.14 (15.10.2026): Hero: Erklärtext in den gelben Amazon-Button integriert; „App ausprobieren“ mit Hinweis „Die App zum Buch“.

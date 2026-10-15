@@ -1,5 +1,5 @@
 /* Service Worker – WAS MACHE ICH WENN APP (Scope: dieser Ordner) */
-const VERSION = "1.0.7";
+const VERSION = "1.0.8";
 const CACHE = "natbarth-app-" + VERSION;
 const CORE = ["./app.html", "manifest.webmanifest"];
 const OPTIONAL = ["./", "index.html", "favicon.png", "icon-192.png", "icon-512.png", "icon-maskable-512.png", "apple-touch-icon.png", "vorschau_app.jpg"];

@@ -94,6 +94,8 @@ main{padding:22px 18px 40px;outline:0}
 .nameq small{display:block;color:var(--mute);margin-bottom:10px}
 .nameq input,.gate input{width:100%;min-height:50px;font:inherit;font-size:1rem;padding:0 14px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink)}
 .nameq .row,.gate .row{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-top:12px}
+.herobar{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px}
+@media (max-width:480px){.herobar{gap:6px}.herobar .namebtn{padding:6px 10px;gap:6px;font-size:.84rem}.herobar .opt{display:none}}
 .namebtn{grid-column:1/-1;justify-self:start;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:6px 16px;border-radius:999px;border:2px solid var(--heroink);background:transparent;color:var(--heroink);font:700 .92rem system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;cursor:pointer;max-width:100%}.namebtn:hover{background:rgba(255,255,255,.16)}.namebtn span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .sec{margin-top:30px}
 .sec>h2{margin-bottom:12px}
@@ -124,7 +126,7 @@ main{padding:22px 18px 40px;outline:0}
 .helpbox{border:2px solid var(--pink);border-radius:var(--r);padding:16px 20px;margin:14px 0;background:var(--card)}
 .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
 .bar{height:10px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0 18px}
-.bar i{display:block;height:100%;background:var(--pink);border-radius:99px;transition:width .3s}
+.bar i{display:block;height:100%;background:var(--link);border-radius:99px;transition:width .3s}
 .qp{color:var(--mute);font-weight:700;font-size:.92rem}
 .qt{font-size:1.3rem;font-weight:800;margin:6px 0 16px}
 .ans{display:grid;gap:10px}
@@ -160,6 +162,28 @@ main{padding:22px 18px 40px;outline:0}
 .csum>div{flex:1 1 220px;min-width:0}.csum b{display:block;margin-bottom:6px}.csum .bar{margin:0}
 .cempty{background:var(--card);border:2px dashed var(--line);border-radius:var(--r);padding:20px 22px;margin-top:16px}
 .cempty p{margin:0 0 12px}
+.resetbar{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.resetbar small{color:var(--mute);max-width:34em}
+.resetbtn{color:var(--bad);border-color:var(--line)}
+.resetbtn:hover{background:var(--bad);border-color:var(--bad);color:#fff;filter:none}
+.btn.danger{background:var(--bad);color:#fff}
+.csave{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
+.chint{margin:6px 0 12px;font-size:1.15rem}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.ctile{display:flex;align-items:center;gap:14px;text-align:left;min-height:76px;padding:12px 18px;border-radius:var(--r);border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;cursor:pointer;box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
+.ctile:hover{transform:translateY(-2px);border-color:var(--indigo)}
+.ctile:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.ctile .ci{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--link);font-size:1.5rem;font-weight:800;line-height:1}
+.ctile b{display:block;font-size:1.05rem}
+.ctile small{display:block;color:var(--mute);font-size:.88rem;line-height:1.35}
+.ctile.pri{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.ctile.pri .ci{background:rgba(255,255,255,.18);color:#fff}
+.ctile.pri small{color:#e6e3ff}
+.donecard{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center;background:var(--card);border:2px solid var(--ok);border-radius:var(--r);padding:14px 18px;margin:0 0 16px;box-shadow:var(--shadow)}
+.donecard .dc-i{font-size:1.8rem;line-height:1}
+.donecard .dc-t{flex:1 1 220px;min-width:0}.donecard b{display:block;font-size:1.05rem}.donecard small{display:block;color:var(--mute);margin:2px 0 4px}
+.donecard .stars{font-size:1.4rem;letter-spacing:.12em;text-align:left;margin:2px 0 0}
+.donecard .row{display:flex;flex-wrap:wrap;gap:10px;margin:0}
 .nextcard{background:var(--card);border:2px solid var(--indigo);border-radius:var(--r);padding:18px 20px;margin-top:16px;box-shadow:var(--shadow)}
 .nextcard small{display:block;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--pink);font-size:.78rem;margin-bottom:4px}
 .nextcard h2{margin:0 0 4px;font-size:1.25rem}
@@ -192,7 +216,7 @@ footer nav a{display:inline-flex;align-items:center;min-height:44px;font-weight:
 .fbook{display:grid;grid-template-columns:auto 1fr auto;gap:14px 20px;align-items:center;background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:18px 20px;margin-bottom:18px}
 .fbook img{width:64px;height:64px;border-radius:50%;border:3px solid var(--gold);background:#fff;object-fit:cover}
 .fbook b{display:block;font-size:1.05rem;color:var(--ink);margin-bottom:4px}
-.fbook p{margin:0}
+.fbook p{margin:0}.fbook .fnote{margin-top:8px;font-size:.88rem}
 .fbook .btn{text-decoration:none;white-space:nowrap}
 .fbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 18px}
 .fbar nav{gap:8px}
@@ -229,6 +253,11 @@ footer nav a{display:inline-flex;align-items:center;min-height:44px;font-weight:
 </div></header>
 <main id="main" class="wrap" tabindex="-1"></main>
 <footer><div class="wrap">
+  <div class="fbook">
+    <img id="fLion" alt="" width="64" height="64">
+    <div><b>Aus dem Buch „Was mache ich, wenn…?“</b><p>Hier siehst du die wichtigsten Ideen aus dem Buch von Nathalie Barth. Das Buch geht in jede Situation tiefer: mit Beispielen, Formulierungen und Übungen für mehr als 25 Alltagssituationen.</p><p class="fnote">Die App ist ein Lernangebot und kein Ersatz für professionelle Beratung. Dein Name und dein Fortschritt bleiben nur auf diesem Gerät.</p></div>
+    <a class="btn gold" href="https://www.amazon.de/Was-mache-ich-wenn-Situationen/dp/B0FKZ4T17T" target="amazon-buch">Buch bei Amazon ansehen</a>
+  </div>
   <div class="help" id="hilfe"><h2>Hilfe finden</h2>
     <p>Diese App ersetzt keine Beratung oder Therapie. Wenn du dir Sorgen machst, hole dir Unterstützung. Das ist ein Zeichen von Stärke.</p>
     <ul>
@@ -237,11 +266,6 @@ footer nav a{display:inline-flex;align-items:center;min-height:44px;font-weight:
       <li>Kinder- und Jugendtelefon (Nummer gegen Kummer): <a href="tel:116111">116 111</a></li>
       <li>TelefonSeelsorge: <a href="tel:08001110111">0800 111 0 111</a> oder <a href="tel:08001110222">0800 111 0 222</a></li>
     </ul>
-  </div>
-  <div class="fbook">
-    <img id="fLion" alt="" width="64" height="64">
-    <div><b>Aus dem Buch „Was mache ich, wenn…?“</b><p>Inhalte nach dem Buch von Nathalie Barth. Die App ist ein Lernangebot und kein Ersatz für professionelle Beratung. Dein Name und dein Fortschritt bleiben nur auf diesem Gerät.</p></div>
-    <a class="btn gold" href="https://www.amazon.de/Was-mache-ich-wenn-Situationen/dp/B0FKZ4T17T" target="amazon-buch">Buch bei Amazon ansehen</a>
   </div>
   <div class="fbar">
     <nav aria-label="Rechtliches"><a href="../index.html">Webseite</a><a href="../impressum.html">Impressum</a><a href="../datenschutz.html">Datenschutz</a></nav>
@@ -271,7 +295,7 @@ footer nav a{display:inline-flex;align-items:center;min-height:44px;font-weight:
   });
 })();
 "use strict";
-const KEY = "wmiw_app_v1", VERSION = "1.1.4", STAND = "15.10.2026";
+const KEY = "wmiw_app_v1", VERSION = "1.1.17", STAND = "15.10.2026";
 const AMAZON = "https://www.amazon.de/Was-mache-ich-wenn-Situationen/dp/B0FKZ4T17T";
 const LION = "data:image/jpeg;base64,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";
 /* ---------- Inhalte: aus dem Buch „Was mache ich, wenn…?“ von Nathalie Barth ---------- */
@@ -500,6 +524,8 @@ const modById = id => MODULES.find(m => m.id === id);
 /* ---------- Ansichten ---------- */
 function setTitle(t){ document.title = t ? t + " – WAS MACHE ICH WENN APP" : "WAS MACHE ICH WENN APP – Nathalie Barth"; }
 function render(focus = true){
+  const pi = $("#pwa-inst"); if(pi && view.v !== "home") pi.classList.remove("show");
+  const hb = $("#hilfe"); if(hb) hb.hidden = view.v !== "home";   // "Hilfe finden" gehört nur auf die Übersicht   // der feste Installations-Hinweis soll Lektionen, Quiz und Ergebnis nicht verdecken
   const m = $("#main"); m.replaceChildren();
   ({home:renderHome, lesson:renderLesson, gate:renderGate, quiz:renderQuiz, result:renderResult, certs:renderCerts}[view.v] || renderHome)(m);
   if(focus){ const t = $("#main h1"); if(t){ t.setAttribute("tabindex", "-1"); t.focus({preventScroll:true}); } window.scrollTo(0, 0); }
@@ -529,16 +555,17 @@ function renderHome(m){
       h("div", {class:"stat", role:"listitem"}, h("b", {text:rankName(T.st)}), h("span", {text:"Dein Stand"})),
       h("div", {class:"stat", role:"listitem"}, h("b", {text:T.dn + " von " + MODULES.length}), h("span", {text:"Module"})),
       h("div", {class:"stat", role:"listitem"}, h("b", {text:"★ " + T.st + "/" + MODULES.length * 3}), h("span", {text:"Sterne"}))),
-    hasName() ? h("button", {type:"button", class:"namebtn", "aria-label":"Name ändern: " + fname(), onclick:() => { editName = true; focusName = true; render(false); }}, h("span", {"aria-hidden":"true"}, "✎"), h("span", {text:fname() + " · Name ändern"}))
-              : ((ach.skip && !editName) ? h("button", {type:"button", class:"namebtn", onclick:() => { editName = true; focusName = true; render(false); }}, h("span", {"aria-hidden":"true"}, "✎"), h("span", {text:"Name eintragen"})) : null)));
+    h("div", {class:"herobar"},
+      hasName() ? h("button", {type:"button", class:"namebtn", "aria-label":"Name ändern: " + fname(), onclick:() => { editName = true; focusName = true; render(false); }}, h("span", {"aria-hidden":"true"}, "✎"), h("span", {text:fname() + " · Name ändern"}))
+                : ((ach.skip && !editName) ? h("button", {type:"button", class:"namebtn", onclick:() => { editName = true; focusName = true; render(false); }}, h("span", {"aria-hidden":"true"}, "✎"), h("span", {text:"Name eintragen"})) : null),
+      h("button", {type:"button", class:"namebtn", onclick:() => go("certs", {})}, h("span", {"aria-hidden":"true"}, "🏅"), h("span", null, h("span", {class:"opt"}, "Meine "), "Bestätigungen")))));
   const nm1 = MODULES.find(x => !earned(x)), alle = T.dn === MODULES.length;
   m.append(h("section", {class:"nextcard", "aria-labelledby":"nx"},
     h("small", {text:T.dn === 0 ? "Starte hier" : (alle ? "Alles geschafft" : "Dein nächster Schritt")}),
     h("h2", {id:"nx", text:alle ? "Du hast alle sieben Module geschafft" : nm1.ico + " " + nm1.t}),
     h("p", {text:alle ? "Schau dir dein Zertifikat an oder stöbere noch einmal durch die Module." : nm1.sub + " · ca. " + nm1.min + " Min."}),
     h("div", {class:"row"},
-      alle ? h("button", {type:"button", class:"btn", onclick:() => go("certs", {id:"master"})}, "Zertifikat ansehen") : h("button", {type:"button", class:"btn", onclick:() => go("lesson", {id:nm1.id})}, T.dn === 0 ? "Los geht’s" : "Weiterlernen"),
-      T.dn > 0 ? h("button", {type:"button", class:"btn ghost", onclick:() => go("certs", {})}, "Meine Bestätigungen") : null)));
+      alle ? h("button", {type:"button", class:"btn", onclick:() => go("certs", {id:"master"})}, "Zertifikat ansehen") : h("button", {type:"button", class:"btn", onclick:() => go("lesson", {id:nm1.id})}, T.dn === 0 ? "Los geht’s" : "Weiterlernen"))));
   if((!hasName() && !ach.skip) || editName){
     const inp = h("input", {id:"nmq", type:"text", maxlength:"40", autocomplete:"given-name", placeholder:"Dein Vorname oder Name", value:nm});
     const done = v => { nm = v.trim().slice(0, 40); editName = false; ach.skip = !nm; save(); render(false); };
@@ -562,27 +589,43 @@ function renderHome(m){
         h("span", {class:"ic", style:"background:" + l.c, "aria-hidden":"true", text:l.ico}),
         h("span", null, h("b", {text:l.t}), h("small", {text:l.sub + " · ca. " + l.min + " Min."})),
         h("span", {class:"st" + (earned(l) ? " done" : ""), text:earned(l) ? "✓ " + starsText(stars(l)) : (l === next ? "Weiter" : "")})))))));
-  if(T.dn === 0) m.append(h("div", {class:"actions"}, h("button", {type:"button", class:"btn ghost", onclick:() => go("certs", {})}, "Meine Bestätigungen")));
-  m.append(h("section", {class:"sec"}, h("div", {class:"panel"}, h("h2", {text:"Mehr im Buch"}),
-    h("p", {text:"Hier siehst du nur die wichtigsten Ideen. Das Buch geht in jede Situation tiefer: mit Beispielen, Formulierungen und Übungen für mehr als 25 Alltagssituationen."}),
-    h("a", {class:"btn gold", href:AMAZON, target:"amazon-buch"}, "Buch bei Amazon ansehen"))));
-  if(T.dn > 0) m.append(h("p", {class:"note", style:"margin-top:22px"}, h("button", {type:"button", class:"link", onclick:() => { if(confirm("Fortschritt wirklich löschen?")){ prog = {}; save(); render(false); } }}, "Fortschritt zurücksetzen")));
+  if(T.dn > 0) m.append(h("div", {class:"resetbar"},
+    h("button", {type:"button", class:"btn ghost sm resetbtn", onclick:askReset}, "↺ Fortschritt zurücksetzen"),
+    h("small", {text:"Löscht deine geschafften Module, Sterne und Bestätigungen. Dein Name bleibt gespeichert."})));
 }
 
+function askReset(){
+  document.querySelectorAll(".shdlg").forEach(x => x.remove());
+  const d = h("dialog", {class:"shdlg", "aria-labelledby":"rst"},
+    h("p", {class:"shh"}, h("b", {id:"rst", text:"Fortschritt wirklich zurücksetzen?"}), h("span", {text:"Alle geschafften Module, Sterne und Bestätigungen werden gelöscht. Dein Name bleibt gespeichert. Das lässt sich nicht rückgängig machen."})),
+    h("div", {class:"shrow"},
+      h("button", {type:"button", class:"btn", onclick:() => d.close()}, "Abbrechen"),
+      h("button", {type:"button", class:"btn danger", onclick:() => { prog = {}; save(); d.close(); render(false); }}, "Ja, zurücksetzen")));
+  d.addEventListener("click", ev => { if(ev.target === d) d.close(); }); d.addEventListener("close", () => d.remove());
+  document.body.append(d); d.showModal();
+}
 function renderLesson(m){
   const l = modById(view.id); if(!l){ go("home"); return; }
   setTitle(l.t);
   m.append(crumb("Übersicht", () => go("home"), "Modul " + (MODULES.indexOf(l) + 1) + " von " + MODULES.length), stepper(1));
   m.append(h("div", {class:"lhead", style:"background:" + l.c},
     h("h1", {id:"h1", text:l.ico + " " + l.t}), h("p", {text:l.sub + " · ca. " + l.min + " Min."})));
+  if(earned(l)){
+    m.append(h("section", {class:"donecard", "aria-labelledby":"dcT"},
+      h("span", {class:"dc-i", "aria-hidden":"true"}, "✅"),
+      h("div", {class:"dc-t"}, h("b", {id:"dcT", text:"Dieses Modul hast du schon geschafft"}), h("small", {text:"Du kannst dir die Teilnahmebestätigung ansehen oder das Quiz wiederholen, um mehr Sterne zu holen."}), h("div", {class:"stars", role:"img", "aria-label":stars(l) + " von 3 Sternen", text:starsText(stars(l))})),
+      h("div", {class:"row"},
+        h("button", {type:"button", class:"btn", onclick:() => go("certs", {id:l.id})}, "Bestätigung ansehen"),
+        h("button", {type:"button", class:"btn ghost", onclick:() => startQuiz(l)}, "Quiz wiederholen"))));
+  }
   l.cards.forEach(c => m.append(h("article", {class:"kcard"}, h("h2", {text:c[0]}), h("p", {text:c[1]}))));
   m.append(h("div", {class:"merk"}, h("b", {text:"Merksatz"}), h("q", {text:l.saying})));
   m.append(h("div", {class:"pro"}, h("b", {text:"Zum Vertiefen"}), h("span", {text:l.pro})));
-  if(l.help) m.append(h("div", {class:"helpbox", role:"note"}, h("b", {text:"Du bist nicht allein. "}), "Bei diesen Themen kann Unterstützung von außen sehr entlasten. Anlaufstellen findest du unten im Bereich ", h("a", {href:"#hilfe", onclick:e => { e.preventDefault(); const t = $("#hilfe"); t.scrollIntoView({block:"center"}); }}, "„Hilfe finden“"), "."));
+  if(l.help) m.append(h("div", {class:"helpbox", role:"note"}, h("b", {text:"Du bist nicht allein. "}), "Bei diesen Themen kann Unterstützung von außen sehr entlasten. Anlaufstellen findest du auf der Übersicht im Bereich ", h("a", {href:"#hilfe", onclick:e => { e.preventDefault(); go("home"); setTimeout(() => { const t = $("#hilfe"); if(t) t.scrollIntoView({block:"center"}); }, 80); }}, "„Hilfe finden“"), "."));
   m.append(h("div", {class:"srcbox"}, h("b", {text:"Mehr dazu im Buch:"}), h("ul", null, l.src.map(s => h("li", {text:"Kapitel „" + s + "“"})))));
   m.append(h("div", {class:"actions"},
-    h("button", {type:"button", class:"btn", onclick:() => startQuiz(l)}, "Quiz starten (" + l.q.length + " Fragen)"),
-    h("a", {class:"btn gold", href:AMAZON, target:"amazon-buch"}, "Im Buch nachlesen")));
+    earned(l) ? h("button", {type:"button", class:"btn", onclick:() => go("certs", {id:l.id})}, "Bestätigung ansehen") : null,
+    h("button", {type:"button", class:earned(l) ? "btn ghost" : "btn", onclick:() => startQuiz(l)}, (earned(l) ? "Quiz wiederholen" : "Quiz starten") + " (" + l.q.length + " Fragen)")));
   const mi = MODULES.indexOf(l), pv = MODULES[mi - 1], nx = MODULES[mi + 1];
   m.append(h("nav", {class:"modnav", "aria-label":"Weitere Module"},
     pv ? backBtn("Vorheriges Modul", () => go("lesson", {id:pv.id}), pv.t) : h("span"),
@@ -702,7 +745,14 @@ function renderCerts(m){
     const box = h("div", {class:"cbox printable", id:"certbox", role:"group", "aria-label":"Vorschau der Bestätigung"}); box.innerHTML = certSVG(l);
     fld.querySelector("input").oninput = e => { nm = e.target.value; ach.skip = !nm.trim(); save(); box.innerHTML = certSVG(l); };
     m.append(fld, box,
-      h("div", {class:"actions"}, h("button", {type:"button", class:"btn", onclick:() => downloadCert(l)}, "Als Bild speichern (PNG)"), h("button", {type:"button", class:"btn ghost", onclick:() => { document.body.classList.add("printcert"); window.print(); setTimeout(() => document.body.classList.remove("printcert"), 500); }}, "Drucken")));
+      h("div", {class:"csave"},
+        h("button", {type:"button", class:"btn", onclick:() => downloadCert(l)}, "⬇ Als Bild speichern (PNG)"),
+        h("button", {type:"button", class:"btn ghost", onclick:() => { document.body.classList.add("printcert"); window.print(); setTimeout(() => document.body.classList.remove("printcert"), 500); }}, "🖨 Drucken")),
+      h("h2", {class:"chint", text:"Wie geht es weiter?"}),
+      h("div", {class:"cgrid"},
+        l ? h("button", {type:"button", class:"ctile", onclick:() => go("lesson", {id:l.id})}, h("span", {class:"ci", "aria-hidden":"true"}, "↺"), h("span", null, h("b", {text:"Modul nochmal machen"}), h("small", {text:"Noch einmal lesen und das Quiz wiederholen, um mehr Sterne zu holen."}))) : null,
+        l && MODULES[MODULES.indexOf(l) + 1] ? h("button", {type:"button", class:"ctile pri", onclick:() => go("lesson", {id:MODULES[MODULES.indexOf(l) + 1].id})}, h("span", {class:"ci", "aria-hidden":"true"}, "→"), h("span", null, h("b", {text:"Nächstes Modul"}), h("small", {text:MODULES[MODULES.indexOf(l) + 1].ico + " " + MODULES[MODULES.indexOf(l) + 1].t}))) : null,
+        !l ? h("button", {type:"button", class:"ctile pri", onclick:() => go("home")}, h("span", {class:"ci", "aria-hidden":"true"}, "⌂"), h("span", null, h("b", {text:"Zur Übersicht"}), h("small", {text:"Alle Module und deine Sterne auf einen Blick."}))) : null));
     const weitere = MODULES.filter(x => earned(x) && x !== l);
     if(weitere.length || (allDone && l)){
       m.append(h("h2", {text:"Weitere Bestätigungen", style:"margin-top:26px"}), h("div", {class:"cchips"},
